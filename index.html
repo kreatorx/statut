@@ -264,21 +264,34 @@ async function ucitajSveZakone() {
                 if (!response.ok) throw new Error(`Status: ${response.status}`);
                 const podaci = await response.json();
                 
-                // Proceduralna ekstrakcija ID-ja i Naziva akta iz imena fajla
+                // 1. PROCEDURALNA DETEKCIJA NIZA (Rješenje za "podaci.map is not a function")
                 let nizClanova = [];
-if (Array.isArray(podaci)) {
-    nizClanova = podaci;
-} else if (podaci && typeof podaci === 'object') {
-    // Tražimo bilo koji ključ koji u sebi sadrži niz (npr. "clanovi", "stavke"...)
-    const pronadjeniKljuc = Object.keys(podaci).find(k => Array.isArray(podaci[k]));
-    if (pronadjeniKljuc) {
-        nizClanova = podaci[pronadjeniKljuc];
-    } else {
-        throw new Error("JSON nema validnu strukturu niza niti unutrašnjeg niza.");
-    }
-}
+                if (Array.isArray(podaci)) {
+                    nizClanova = podaci;
+                } else if (podaci && typeof podaci === 'object') {
+                    const pronadjeniKljuc = Object.keys(podaci).find(k => Array.isArray(podaci[k]));
+                    if (pronadjeniKljuc) {
+                        nizClanova = podaci[pronadjeniKljuc];
+                    } else {
+                        throw new Error("JSON nema validnu strukturu niza niti unutrašnjeg niza.");
+                    }
+                }
 
-                const mapiraniPodaci = podaci.map((clan, indeks) => ({
+                // 2. EKSTRAKCIJA ID-ja I NAZIVA (Vraćeno nazad u kod)
+                const idZakona = fajl.replace(/^\d+_/, '').replace('.json', '').toLowerCase();
+                let generisaniNaziv = idZakona.replace(/_/g, ' ');
+                generisaniNaziv = generisaniNaziv.split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+                const temaBoja = PALETA_BOJA[indeksBoje % PALETA_BOJA.length];
+
+                ucitaniIzvori.push({
+                    id: idZakona,
+                    naziv: generisaniNaziv,
+                    theme: temaBoja
+                });
+                indeksBoje++;
+
+                // 3. MAPIRANJE (Sada ispravno koristi 'nizClanova')
+                const mapiraniPodaci = nizClanova.map((clan, indeks) => ({
                     id_sistema: `${idZakona}_${indeks}`,
                     broj_clana: clan.clan_broj || "N/A",
                     naziv_clana: clan.naslov || "Bez naslova",
