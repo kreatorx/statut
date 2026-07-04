@@ -265,17 +265,18 @@ async function ucitajSveZakone() {
                 const podaci = await response.json();
                 
                 // Proceduralna ekstrakcija ID-ja i Naziva akta iz imena fajla
-                const idZakona = fajl.replace(/^\d+_/, '').replace('.json', '').toLowerCase();
-                let generisaniNaziv = idZakona.replace(/_/g, ' ');
-                generisaniNaziv = generisaniNaziv.split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
-                const temaBoja = PALETA_BOJA[indeksBoje % PALETA_BOJA.length];
-
-                ucitaniIzvori.push({
-                    id: idZakona,
-                    naziv: generisaniNaziv,
-                    theme: temaBoja
-                });
-                indeksBoje++;
+                let nizClanova = [];
+if (Array.isArray(podaci)) {
+    nizClanova = podaci;
+} else if (podaci && typeof podaci === 'object') {
+    // Tražimo bilo koji ključ koji u sebi sadrži niz (npr. "clanovi", "stavke"...)
+    const pronadjeniKljuc = Object.keys(podaci).find(k => Array.isArray(podaci[k]));
+    if (pronadjeniKljuc) {
+        nizClanova = podaci[pronadjeniKljuc];
+    } else {
+        throw new Error("JSON nema validnu strukturu niza niti unutrašnjeg niza.");
+    }
+}
 
                 const mapiraniPodaci = podaci.map((clan, indeks) => ({
                     id_sistema: `${idZakona}_${indeks}`,
