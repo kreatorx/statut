@@ -339,7 +339,7 @@ function generisiMenijeZakon() {
         
         html += `
         <div class="border border-${th}-300 rounded-lg p-1.5 bg-white">
-            <details class="group overflow-hidden transition-all duration-300" open>
+            <details class="group overflow-hidden transition-all duration-300">
                 <summary class="flex items-center justify-between p-2 bg-slate-50 rounded-md cursor-pointer select-none border border-gray-200">
                     <div class="flex items-center" onclick="event.stopPropagation();">
                         <input type="checkbox" id="master-${izvor.id}" value="${izvor.naziv}" onchange="toggleMaster('${izvor.id}', this)" checked class="w-4 h-4 rounded text-blue-600">
