@@ -560,16 +560,29 @@
                 return;
             }
 
-            for (const [katKljuc, katPostavke] of Object.entries(STRUKTURA_KATEGORIJA)) {
-                const clanoviUGrupi = clanovi.filter(c => c.kategorija === katKljuc);
-                if (clanoviUGrupi.length === 0) continue;
+            // 1. Odvajanje AI preporuka od ostatka zakona
+            const preporuceni = [];
+            const ostali = [];
+
+            clanovi.forEach(clan => {
+                const jedinstveniKljuc = `${clan.naziv_zakona}__${clan.broj_clana}`;
+                if (istaknutiKljucevi.length > 0 && istaknutiKljucevi.includes(jedinstveniKljuc)) {
+                    preporuceni.push(clan);
+                } else {
+                    ostali.push(clan);
+                }
+            });
+
+            // Pomoćna funkcija za iscrtavanje jedne sekcije (bloka)
+            const iscrtajSekciju = (clanoviSekcije, nazivSekcije, klasaBordera, bgGrupacije) => {
+                if (clanoviSekcije.length === 0) return;
 
                 const grupaZon = document.createElement('div');
-                grupaZon.className = `p-3 rounded-lg border-2 ${katPostavke.klasaBordera} ${katPostavke.bgGrupacije} space-y-2`;
+                grupaZon.className = `p-3 rounded-lg border-2 ${klasaBordera} ${bgGrupacije} space-y-2`;
 
                 const grupaNaslov = document.createElement('h2');
                 grupaNaslov.className = "text-xs font-bold uppercase tracking-wider text-gray-800 border-b pb-1 flex justify-between items-center";
-                grupaNaslov.innerHTML = `<span>${katPostavke.naziv}</span> <span class="bg-white/80 px-1.5 py-0.2 rounded text-[10px] text-gray-600 font-mono border">${clanoviUGrupi.length}</span>`;
+                grupaNaslov.innerHTML = `<span>${nazivSekcije}</span> <span class="bg-white/80 px-1.5 py-0.2 rounded text-[10px] text-gray-600 font-mono border">${clanoviSekcije.length}</span>`;
                 grupaZon.appendChild(grupaNaslov);
 
                 const mrezaKartica = document.createElement('div');
@@ -580,7 +593,7 @@
                     mrezaKartica.className = "flex flex-col space-y-1.5";
                 }
 
-                clanoviUGrupi.forEach(clan => {
+                clanoviSekcije.forEach(clan => {
                     const jedinstveniKljuc = `${clan.naziv_zakona}__${clan.broj_clana}`;
                     const jeAIPreporuka = istaknutiKljucevi.length > 0 && istaknutiKljucevi.includes(jedinstveniKljuc);
 
@@ -621,10 +634,25 @@
 
                 grupaZon.appendChild(mrezaKartica);
                 container.appendChild(grupaZon);
+            };
+
+            // 2. Prvo iscrtavamo objedinjenu grupu "AI PREPORUKE" (ako postoje)
+            if (preporuceni.length > 0) {
+                iscrtajSekciju(preporuceni, '<i class="fa-solid fa-star text-yellow-500 mr-1"></i> AI Preporuke', 'border-purple-500', 'bg-purple-100/50');
             }
+
+            // 3. Zatim iscrtavamo ostale članove, grupisane po normalnim kategorijama
+            for (const [katKljuc, katPostavke] of Object.entries(STRUKTURA_KATEGORIJA)) {
+                const clanoviUGrupi = ostali.filter(c => c.kategorija === katKljuc);
+                if (clanoviUGrupi.length === 0) continue;
+
+                iscrtajSekciju(clanoviUGrupi, katPostavke.naziv, katPostavke.klasaBordera, katPostavke.bgGrupacije);
+            }
+
             postavyUtegnuteMargineGrupacije();
         }
 
+        
         function postavyUtegnuteMargineGrupacije() {
             const container = document.getElementById('laws-container');
             if (!container) return;
