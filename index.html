@@ -266,9 +266,10 @@
 
                     for (const fajl of fajlovi) {
                         try {
-                            // Sve radimo malim slovima jer je Vercel case-sensitive
                             const siguranNazivFajla = fajl.trim();
-                            const putanjaFajla = (kategorijaKljuc === "Statut")
+                            
+                            // Osiguravamo provjeru bez obzira na velika/mala slova u ključu (Statut/statut)
+                            const putanjaFajla = (kategorijaKljuc.toLowerCase() === "statut")
                                 ? `./${siguranNazivFajla}`
                                 : `./pravilnici/${siguranNazivFajla}`;
 
@@ -286,12 +287,14 @@
                             }
 
                             if (nizClanova.length === 0) continue;
-                            const idZakona = siguranNazivFajla.replace('.json', '');
+                            
+                            // ID u kodu radi stabilnosti HTML selektora pretvaramo u mala slova
+                            const idZakona = siguranNazivFajla.replace('.json', '').toLowerCase();
 
                             ucitaniIzvori.push({
                                 id: idZakona,
                                 naziv: naslovDokumenta,
-                                kategorija: kategorijaKljuc,
+                                kategorija: kategorijaKljuc, // Zadržava tvoj tačan ključ ("Statut")
                                 imeFajla: siguranNazivFajla
                             });
 
@@ -303,7 +306,7 @@
                                 cisti_tekst: clan.tekst || (clan.segmenti ? JSON.stringify(clan.segmenti) : ""),
                                 naziv_zakona: naslovDokumenta,
                                 id_zakona: idZakona,
-                                kategorija: kategorijaKljuc,
+                                kategorija: kategorijaKljuc, // Zadržava tvoj tačan ključ ("Statut")
                                 glava: clan.glava || "Opće sekcije"
                             }));
 
