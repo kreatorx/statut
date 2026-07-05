@@ -281,11 +281,23 @@
                             let naslovDokumenta = siguranNazivFajla.replace(/^\d+[\._]/, '').replace('.json', '').replace(/_/g, ' ');
 
                             if (podaci && typeof podaci === 'object') {
-                                if (podaci.header) naslovDokumenta = podaci.header;
-                                if (Array.isArray(podaci.clanovi)) nizClanova = podaci.clanovi;
-                                else if (Array.isArray(podaci)) nizClanova = podaci;
-                            }
-
+    if (podaci.header) naslovDokumenta = podaci.header;
+    
+    if (Array.isArray(podaci.clanovi)) {
+        nizClanova = podaci.clanovi;
+    } else if (Array.isArray(podaci)) {
+        nizClanova = podaci;
+    } else {
+        // Dinamički pronalazi prvi ključ u objektu čija je vrijednost niz (Array)
+        const kljucevi = Object.keys(podaci);
+        for (const kljuc of kljucevi) {
+            if (Array.isArray(podaci[kljuc])) {
+                nizClanova = podaci[kljuc];
+                break;
+            }
+        }
+    }
+}
                             if (nizClanova.length === 0) continue;
                             
                             // ID u kodu radi stabilnosti HTML selektora pretvaramo u mala slova
