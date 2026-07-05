@@ -267,7 +267,7 @@
                     for (const fajl of fajlovi) {
                         try {
                             // Sve radimo malim slovima jer je Vercel case-sensitive
-                            const siguranNazivFajla = fajl.toLowerCase().trim();
+                            const siguranNazivFajla = fajl.trim();
                             const putanjaFajla = (kategorijaKljuc === "statut")
                                 ? `./${siguranNazivFajla}`
                                 : `./pravilnici/${siguranNazivFajla}`;
@@ -336,7 +336,7 @@
                     const brojFajla = izvor.imeFajla.match(/^\d+(\.\d+)?/);
                     if (brojFajla) {
                         const br = brojFajla[0];
-                        const dozvoljeniBrojevi = ["02", "07", "08", "12", "12.1", "12.2", "13", "14", "14.1", "14.2", "17", "17.1", "18", "30", "33", "35", "38"];
+                        const dozvoljeniBrojevi = ["02", "07", "08"];
                         if (dozvoljeniBrojevi.includes(br)) {
                             trebaOznaciti = true;
                         }
