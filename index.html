@@ -189,7 +189,7 @@
                     <p class="text-xs text-gray-500">AI vrši evaluaciju selektovanog registra...</p>
                 </div>
 
-                <div id="laws-container" class="overflow-y-auto max-h-[65vh] pr-1 space-y-4 pb-20"></div>
+                <div id="laws-container" class="pr-1 space-y-4 pb-20"></div>
             </div>
         </main>
     </div>
@@ -386,6 +386,9 @@
             for (const [katKljuc, katPostavke] of Object.entries(STRUKTURA_KATEGORIJA)) {
                 const izvoriUKat = ucitaniIzvori.filter(i => i.kategorija === katKljuc);
                 if (izvoriUKat.length === 0) continue;
+
+                // Provjera: Samo Statut ostaje otvoren
+                const isOpen = katKljuc === "Statut" ? "open" : "";
 
                 html += `
                 <div class="border-2 ${katPostavke.klasaBordera} rounded-lg p-2 bg-white shadow-sm">
@@ -626,9 +629,9 @@
             const container = document.getElementById('laws-container');
             if (!container) return;
             if (trenutniLayout === 'grid') {
-                container.className = "overflow-y-auto max-h-[65vh] pr-1 space-y-4 pb-20";
+                container.className = "pr-1 space-y-4 pb-20 h-auto";
             } else {
-                container.className = "overflow-y-auto max-h-[65vh] pr-1 space-y-3 pb-20";
+                container.className = "pr-1 space-y-3 pb-20 h-auto";
             }
         }
 
