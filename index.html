@@ -266,13 +266,18 @@
 
                     for (const fajl of fajlovi) {
                         try {
-                            const putanjaFajla = (kategorijaKljuc === "statut") ? `./${fajl}` : `./pravilnici/${fajl}`;
+                            // Sve radimo malim slovima jer je Vercel case-sensitive
+                            const siguranNazivFajla = fajl.toLowerCase().trim();
+                            const putanjaFajla = (kategorijaKljuc === "statut")
+                                ? `./${siguranNazivFajla}`
+                                : `./pravilnici/${siguranNazivFajla}`;
+
                             const response = await fetch(putanjaFajla);
                             if (!response.ok) throw new Error(`Status: ${response.status}`);
-                            const podaci = await response.json();
 
+                            const podaci = await response.json();
                             let nizClanova = [];
-                            let naslovDokumenta = fajl.replace(/^\d+[\._]/, '').replace('.json', '').replace(/_/g, ' ');
+                            let naslovDokumenta = siguranNazivFajla.replace(/^\d+[\._]/, '').replace('.json', '').replace(/_/g, ' ');
 
                             if (podaci && typeof podaci === 'object') {
                                 if (podaci.header) naslovDokumenta = podaci.header;
@@ -281,13 +286,13 @@
                             }
 
                             if (nizClanova.length === 0) continue;
-                            const idZakona = fajl.replace('.json', '').toLowerCase();
+                            const idZakona = siguranNazivFajla.replace('.json', '');
 
                             ucitaniIzvori.push({
                                 id: idZakona,
                                 naziv: naslovDokumenta,
                                 kategorija: kategorijaKljuc,
-                                imeFajla: fajl
+                                imeFajla: siguranNazivFajla
                             });
 
                             const mapiraniPodaci = nizClanova.map((clan, indeks) => ({
@@ -316,7 +321,7 @@
 
             document.getElementById('search-stats').innerText = `Baza spremna. Stavki: ${sviZakonPodaci.length}`;
             generisiMenijeZakon();
-            postaviDefaultOznacene(); // Automatsko defaultno označavanje specifičnih fajlova
+            postaviDefaultOznacene();
         }
 
         function postaviDefaultOznacene() {
