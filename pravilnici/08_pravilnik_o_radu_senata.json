@@ -1,5 +1,7 @@
 {
-  "07-Poslovnik-o-radu-Senata": [
+  "header": "Pravilnik o radu senata",
+  "org": "Univerzitet u Zenici",
+  "clanovi": [
     {
       "clan_broj": "1",
       "glava": "POGLAVLJE I. OPĆE ODREDBE",

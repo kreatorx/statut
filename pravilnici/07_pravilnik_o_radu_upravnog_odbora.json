@@ -1,5 +1,7 @@
 {
-  "06-Poslovnik-o-radu-Upravnog-odbora": [
+  "header": "Pravilnik o radu upravnog odbora",
+  "org": "Univerzitet u Zenici",
+  "clanovi": [
     {
       "clan_broj": "1",
       "glava": "",

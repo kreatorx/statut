@@ -1,5 +1,7 @@
 {
-  "02_pravilnik_o_održavanju_nastave": [
+  "header": "Pravilnik o organizaciji nastave",
+  "org": "Univerzitet u Zenici",
+  "clanovi": [
     {
       "clan_broj": "1",
       "glava": "",

@@ -1,5 +1,7 @@
 {
-  "23-Poslovnik-o-radu-katedri": [
+  "header": "Pravilnik o radu katedri",
+  "org": "Univerzitet u Zenici",
+  "clanovi": [
     {
       "clan_broj": "1",
       "glava": "",
