@@ -225,7 +225,7 @@
         let trenutniLayout = 'list';
 
         const STRUKTURA_KATEGORIJA = {
-            "statut": { naziv: "Statut", klasaBordera: "border-blue-500", bgGrupacije: "bg-blue-50/60" },
+            "Statut": { naziv: "Statut", klasaBordera: "border-blue-500", bgGrupacije: "bg-blue-50/60" },
             "eticki_kodeks": { naziv: "Etički kodeks", klasaBordera: "border-purple-500", bgGrupacije: "bg-purple-50/60" },
             "pravilnici": { naziv: "Pravilnici i poslovnici", klasaBordera: "border-emerald-500", bgGrupacije: "bg-emerald-50/60" }
         };
@@ -268,7 +268,7 @@
                         try {
                             // Sve radimo malim slovima jer je Vercel case-sensitive
                             const siguranNazivFajla = fajl.trim();
-                            const putanjaFajla = (kategorijaKljuc === "statut")
+                            const putanjaFajla = (kategorijaKljuc === "Statut")
                                 ? `./${siguranNazivFajla}`
                                 : `./pravilnici/${siguranNazivFajla}`;
 
@@ -330,7 +330,7 @@
             ucitaniIzvori.forEach(izvor => {
                 let trebaOznaciti = false;
 
-                if (izvor.kategorija === 'statut' || izvor.kategorija === 'eticki_kodeks') {
+                if (izvor.kategorija === 'Statut' || izvor.kategorija === 'eticki_kodeks') {
                     trebaOznaciti = true;
                 } else if (izvor.kategorija === 'pravilnici') {
                     const brojFajla = izvor.imeFajla.match(/^\d+(\.\d+)?/);
