@@ -1,6 +1,6 @@
 {
   "statut": [
-    "01_statut_maj_2023.json"
+    "01_Statut_maj_2023.json"
   ],
   "eticki_kodeks": [
     "01_eticki_kodeks.json",
@@ -45,7 +45,7 @@
     "30_pravilnik_o_izboru_nastavnika_i_saradnika.json",
     "31_pravilnik_o_radu_univerzitetske_biblioteke.json",
     "32_pravilnik_o_radu_foruma_stakeholdera_usvojeni.json",
-    "33_pravilnik_o_radu_etcike_komisije.json",
+    "33_pravilnik_o_radu_eticke_komisije.json",
     "34_pravilnik_o_mobilnosti.json",
     "35_pravilnik_o_javnim_nabavkama.json",
     "36_pravilnik_o_ectsu.json",
