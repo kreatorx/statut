@@ -696,6 +696,18 @@
             document.getElementById('member-modal').classList.remove('hidden');
         }
 
+        // Pomoćna funkcija za čišćenje teksta prilikom AI mapiranja
+function normalizujZaUsporedbu(tekst) {
+    if (!tekst) return "";
+    return String(tekst)
+        .toLowerCase()
+        .replace(/[čć]/g, 'c')
+        .replace(/[š]/g, 's')
+        .replace(/[ž]/g, 'z')
+        .replace(/[đ]/g, 'd')
+        .replace(/[^a-z0-9]/g, ''); // Uklanja sve razmake, tačke, crtice itd.
+}
+
         async function traziAI() {
             const izabraniModel = document.getElementById('ai-model-select').value;
             const problemText = document.getElementById('ai-problem').value.trim();
@@ -794,29 +806,43 @@
                 document.getElementById('ai-response-box-desktop').classList.remove('hidden');
 
                 const preporuke = aiContent.predlozeni_clanovi || [];
+                const stvarniPreporuceniKljucevi = [];
+                const filtriraniZakon = [];
 
-                const preporuceniKljucevi = preporuke.map(p => {
-                    let lokalniZakon = (p.zakon || "").trim().toLowerCase();
-                    let pronadjeniZakon = ucitaniIzvori.find(i => i.naziv.toLowerCase().includes(lokalniZakon) || lokalniZakon.includes(i.naziv.toLowerCase()));
-                    let stvarniNazivZakona = pronadjeniZakon ? pronadjeniZakon.naziv : p.zakon;
-
-                    let cistiBroj = String(p.clan || "").toLowerCase().replace('član', '').replace('stavka', '').replace('.', '').trim();
-                    return `${stvarniNazivZakona}__${cistiBroj}`;
+                // Robusno mapiranje koje ignoriše dijakritiku, razmake i simbole
+                preporuke.forEach(p => {
+                const aiZakonNorm = normalizujZaUsporedbu(p.zakon);
+                const aiBrojNorm = normalizujZaUsporedbu(p.clan).replace(/clana?|stavka/g, '');
+            
+                aktivniZakoniPodaci.forEach(clan => {
+                    const clanNazivNorm = normalizujZaUsporedbu(clan.naziv_zakona);
+                    const clanBrojNorm = normalizujZaUsporedbu(clan.broj_clana).replace(/clana?|stavka/g, '');
+            
+                    // Provjera da li se nazivi poklapaju
+                    const nazivOdgovara = clanNazivNorm === aiZakonNorm || clanNazivNorm.includes(aiZakonNorm) || aiZakonNorm.includes(clanNazivNorm);
+                    const brojOdgovara = clanBrojNorm === aiBrojNorm;
+            
+                    if (nazivOdgovara && brojOdgovara) {
+                        // Ubaci u rezultate ako već nismo
+                        if (!filtriraniZakon.some(c => c.id_sistema === clan.id_sistema)) {
+                            filtriraniZakon.push(clan);
+                        }
+                        // Sačuvaj TAČAN originalni ključ kako bi highlight UI element ispravno reagovao
+                        const tacanKljuc = `${clan.naziv_zakona}__${clan.broj_clana}`;
+                        if (!stvarniPreporuceniKljucevi.includes(tacanKljuc)) {
+                            stvarniPreporuceniKljucevi.push(tacanKljuc);
+                        }
+                    }
                 });
+            });
 
-                const filtriraniZakon = aktivniZakoniPodaci.filter(clan => {
-                    let lokalniCistiBroj = String(clan.broj_clana).toLowerCase().replace('član', '').replace('stavka', '').replace('.', '').trim();
-                    return preporuceniKljucevi.includes(`${clan.naziv_zakona}__${lokalniCistiBroj}`);
-                });
+const OstatakZakona = aktivniZakoniPodaci.filter(clan => 
+    !filtriraniZakon.some(fClan => fClan.id_sistema === clan.id_sistema)
+);
 
-                const OstatakZakona = aktivniZakoniPodaci.filter(clan => {
-                    let lokalniCistiBroj = String(clan.broj_clana).toLowerCase().replace('član', '').replace('stavka', '').replace('.', '').trim();
-                    return !preporuceniKljucevi.includes(`${clan.naziv_zakona}__${lokalniCistiBroj}`);
-                });
-
-                document.getElementById('results-title').innerText = `AI Preporuke (${filtriraniZakon.length})`;
-                prikaziGrupisaneClanove([...filtriraniZakon, ...OstatakZakona], preporuceniKljucevi);
-                document.getElementById('laws-container').scrollTop = 0;
+document.getElementById('results-title').innerText = `AI Preporuke (${filtriraniZakon.length})`;
+prikaziGrupisaneClanove([...filtriraniZakon, ...OstatakZakona], stvarniPreporuceniKljucevi);
+document.getElementById('laws-container').scrollTop = 0;
 
             } catch (error) {
                 console.error("AI Error:", error);
