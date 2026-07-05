@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proceduralni AI Pravni Asistent i Sveobuhvatna Pretraga</title>
+    <title>AI Asistent i Pravna baza akata Univerziteta u Zenici/title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -53,7 +53,7 @@
             <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                 <div>
                     <h1 class="text-lg font-bold tracking-tight">Proceduralna Baza i AI Asistent</h1>
-                    <p class="text-blue-200 text-xs">Sistem za automatsku indeksaciju dokumenata i pametnu analizu</p>
+                    <p class="text-blue-200 text-xs">Sistem za praktičnu analizu na osnovu pravnih dokumenata</p>
                 </div>
             </div>
         </header>
@@ -310,6 +310,7 @@
                 }
             } catch (err) {
                 console.error(err);
+                document.getElementById('search-stats').innerText = `Greška pri inicijalizaciji sistema.`;
                 return;
             }
 
@@ -318,9 +319,7 @@
             postaviDefaultOznacene(); // Automatsko defaultno označavanje specifičnih fajlova
         }
 
-        // Funkcija koja po učitavanju automatski označava samo tražene fajlove i glave
         function postaviDefaultOznacene() {
-            // Isključi apsolutno sve prvo
             document.querySelectorAll('.slave-chk, .master-chk, [id^="cat-"], #chk-all').forEach(cb => cb.checked = false);
 
             ucitaniIzvori.forEach(izvor => {
@@ -346,7 +345,6 @@
                 }
             });
 
-            // Osvježi stanje krovnih master grupa
             for (const katKljuc of Object.keys(STRUKTURA_KATEGORIJA)) {
                 osvjeziKategorijaMaster(katKljuc);
             }
@@ -359,28 +357,28 @@
             if (!container) return;
 
             let html = `
-            <label class="flex items-center gap-2 p-2 bg-slate-900 text-white rounded-lg cursor-pointer transition shadow-sm mb-2">
-                <input type="checkbox" id="chk-all" onchange="toggleApsolutnoSve(this)" class="w-3.5 h-3.5 text-blue-600 border-gray-300 rounded focus:ring-blue-500">
-                <span class="text-xs font-bold">Označi / Pretraži SVE registre</span>
-            </label>
-        `;
+                <label class="flex items-center gap-2 p-2 bg-slate-900 text-white rounded-lg cursor-pointer transition shadow-sm mb-2">
+                    <input type="checkbox" id="chk-all" onchange="toggleApsolutnoSve(this)" class="w-3.5 h-3.5 text-blue-600 border-gray-300 rounded focus:ring-blue-500">
+                    <span class="text-xs font-bold">Označi / Pretraži SVE registre</span>
+                </label>
+            `;
 
             for (const [katKljuc, katPostavke] of Object.entries(STRUKTURA_KATEGORIJA)) {
                 const izvoriUKat = ucitaniIzvori.filter(i => i.kategorija === katKljuc);
                 if (izvoriUKat.length === 0) continue;
 
                 html += `
-            <div class="border-2 ${katPostavke.klasaBordera} rounded-lg p-2 bg-white shadow-sm">
-                <details open class="group">
-                    <summary class="flex items-center justify-between p-1.5 bg-slate-100 rounded-md cursor-pointer select-none border border-gray-300 font-bold text-gray-900 text-xs">
-                        <div class="flex items-center" onclick="event.stopPropagation();">
-                            <input type="checkbox" id="cat-${katKljuc}" onchange="toggleKategorija('${katKljuc}', this)" class="w-3.5 h-3.5 rounded text-blue-600">
-                            <label for="cat-${katKljuc}" class="ml-2 cursor-pointer uppercase tracking-wider">${katPostavke.naziv}</label>
-                        </div>
-                        <span class="text-[10px] text-gray-500 transition-transform duration-200 group-open:rotate-180 mr-1">▼</span>
-                    </summary>
-                    <div class="mt-2 space-y-2 pl-1">
-            `;
+                <div class="border-2 ${katPostavke.klasaBordera} rounded-lg p-2 bg-white shadow-sm">
+                    <details open class="group">
+                        <summary class="flex items-center justify-between p-1.5 bg-slate-100 rounded-md cursor-pointer select-none border border-gray-300 font-bold text-gray-900 text-xs">
+                            <div class="flex items-center" onclick="event.stopPropagation();">
+                                <input type="checkbox" id="cat-${katKljuc}" onchange="toggleKategorija('${katKljuc}', this)" class="w-3.5 h-3.5 rounded text-blue-600">
+                                <label for="cat-${katKljuc}" class="ml-2 cursor-pointer uppercase tracking-wider">${katPostavke.naziv}</label>
+                            </div>
+                            <span class="text-[10px] text-gray-500 transition-transform duration-200 group-open:rotate-180 mr-1">▼</span>
+                        </summary>
+                        <div class="mt-2 space-y-2 pl-1">
+                `;
 
                 izvoriUKat.forEach((izvor) => {
                     const clanoviIzvora = sviZakonPodaci.filter(c => c.id_zakona === izvor.id);
@@ -388,40 +386,40 @@
                     const jedinstveneGlave = [...new Set(clanoviIzvora.map(c => c.glava))];
 
                     html += `
-                    <div class="border border-gray-400 rounded bg-white p-1">
-                        <details class="group">
-                            <summary class="flex items-center justify-between p-1 bg-gray-50 rounded cursor-pointer select-none border border-gray-200 text-gray-700 text-[11px] font-medium">
-                                <div class="flex items-center min-w-0 flex-grow" onclick="event.stopPropagation();">
-                                    <input type="checkbox" id="master-${izvor.id}" data-cat="${katKljuc}" value="${izvor.naziv}" onchange="toggleMaster('${izvor.id}', this)" class="master-chk chk-cat-${katKljuc} w-3 h-3 rounded text-blue-600 flex-shrink-0">
-                                    <label for="master-${izvor.id}" class="ml-1.5 cursor-pointer truncate pr-1 text-gray-700" title="${izvor.naziv}">${izvor.naziv}</label>
-                                </div>
-                                <span class="text-[9px] text-gray-400 transition-transform duration-200 group-open:rotate-180 flex-shrink-0 mr-0.5">▼</span>
-                            </summary>
-                            <div class="p-1 mt-1 ml-2 space-y-1 max-h-[160px] overflow-y-auto text-[10px] text-gray-500 border-l border-gray-300 pl-2 pr-0.5">
-                `;
+                        <div class="border border-gray-400 rounded bg-white p-1">
+                            <details class="group">
+                                <summary class="flex items-center justify-between p-1 bg-gray-50 rounded cursor-pointer select-none border border-gray-200 text-gray-700 text-[11px] font-medium">
+                                    <div class="flex items-center min-w-0 flex-grow" onclick="event.stopPropagation();">
+                                        <input type="checkbox" id="master-${izvor.id}" data-cat="${katKljuc}" value="${izvor.naziv}" onchange="toggleMaster('${izvor.id}', this)" class="master-chk chk-cat-${katKljuc} w-3 h-3 rounded text-blue-600 flex-shrink-0">
+                                        <label for="master-${izvor.id}" class="ml-1.5 cursor-pointer truncate pr-1 text-gray-700" title="${izvor.naziv}">${izvor.naziv}</label>
+                                    </div>
+                                    <span class="text-[9px] text-gray-400 transition-transform duration-200 group-open:rotate-180 flex-shrink-0 mr-0.5">▼</span>
+                                </summary>
+                                <div class="p-1 mt-1 ml-2 space-y-1 max-h-[160px] overflow-y-auto text-[10px] text-gray-500 border-l border-gray-300 pl-2 pr-0.5">
+                    `;
 
                     jedinstveneGlave.forEach((glava) => {
                         const uid = `${izvor.naziv}||${glava}`;
                         html += `
-                                <label class="flex items-start gap-1 cursor-pointer hover:text-gray-950">
-                                    <input type="checkbox" class="slave-chk slave-${izvor.id} chk-slave-cat-${katKljuc} mt-0.5 flex-shrink-0 w-2.5 h-2.5" data-uid="${uid}" onchange="osvjeziJedanMaster('${izvor.id}'); filtrirajPrikaz();">
-                                    <span class="leading-tight truncate" title="${glava}">${glava}</span>
-                                </label>
-                    `;
+                                    <label class="flex items-start gap-1 cursor-pointer hover:text-gray-950">
+                                        <input type="checkbox" class="slave-chk slave-${izvor.id} chk-slave-cat-${katKljuc} mt-0.5 flex-shrink-0 w-2.5 h-2.5" data-uid="${uid}" onchange="osvjeziJedanMaster('${izvor.id}'); filtrirajPrikaz();">
+                                        <span class="leading-tight truncate" title="${glava}">${glava}</span>
+                                    </label>
+                        `;
                     });
 
                     html += `
-                            </div>
-                        </details>
-                    </div>
-                `;
+                                </div>
+                            </details>
+                        </div>
+                    `;
                 });
 
                 html += `
-                    </div>
-                </details>
-            </div>
-            `;
+                        </div>
+                    </details>
+                </div>
+                `;
             }
 
             container.innerHTML = html;
@@ -524,9 +522,6 @@
             osvjeziBrojacRijeciAI();
         }
 
-        function klasicnaPretraga() { filtrirajPrikaz(); }
-
-        // NOVO: Prikaz članova na desnoj strani strogo grupisanih u 3 krovne sekcije
         function prikaziGrupisaneClanove(clanovi, istaknutiKljucevi = []) {
             const container = document.getElementById('laws-container');
             if (!container) return;
@@ -535,19 +530,17 @@
 
             if (!clanovi || clanovi.length === 0) {
                 container.innerHTML = `
-                <div class="text-center py-6 text-gray-400 bg-white rounded-lg border border-gray-200">
-                    <i class="fa-solid fa-folder-open text-xl mb-1"></i>
-                    <p class="text-xs">Nema rezultata za odabrane parametre.</p>
-                </div>`;
+                    <div class="text-center py-6 text-gray-400 bg-white rounded-lg border border-gray-200">
+                        <i class="fa-solid fa-folder-open text-xl mb-1"></i>
+                        <p class="text-xs">Nema rezultata za odabrane parametre.</p>
+                    </div>`;
                 return;
             }
 
-            // Prolaz kroz tri glavne grupe
             for (const [katKljuc, katPostavke] of Object.entries(STRUKTURA_KATEGORIJA)) {
                 const clanoviUGrupi = clanovi.filter(c => c.kategorija === katKljuc);
                 if (clanoviUGrupi.length === 0) continue;
 
-                // Kreiranje kontejnera za grupu
                 const grupaZon = document.createElement('div');
                 grupaZon.className = `p-3 rounded-lg border-2 ${katPostavke.klasaBordera} ${katPostavke.bgGrupacije} space-y-2`;
 
@@ -579,27 +572,27 @@
                     const formatiranTekst = clan.sadrzaj_html || clan.cisti_tekst || "";
 
                     card.innerHTML = `
-                    <div class="flex-grow">
-                        <div class="flex justify-between items-start gap-4">
-                            <div class="min-w-0">
-                                <span class="text-[9px] font-bold uppercase text-blue-600 px-1 py-0.2 bg-blue-50 rounded font-mono">Član ${clan.broj_clana}</span>
-                                <h3 class="text-xs font-bold text-gray-900 mt-0.5 truncate" title="${clan.naziv_clana}">${clan.naziv_clana}</h3>
+                        <div class="flex-grow">
+                            <div class="flex justify-between items-start gap-4">
+                                <div class="min-w-0">
+                                    <span class="text-[9px] font-bold uppercase text-blue-600 px-1 py-0.2 bg-blue-50 rounded font-mono">Član ${clan.broj_clana}</span>
+                                    <h3 class="text-xs font-bold text-gray-900 mt-0.5 truncate" title="${clan.naziv_clana}">${clan.naziv_clana}</h3>
+                                </div>
+                                <div class="flex items-center gap-1 shrink-0" onclick="event.stopPropagation();">
+                                    <button onclick="dodajUPrint('${clan.id_sistema}')" title="Dodaj u ispis" class="text-gray-400 hover:text-green-600 p-1 text-[13px] transition">
+                                        <i class="fa-solid fa-print"></i>
+                                    </button>
+                                    ${jeAIPreporuka ? '<span class="text-[8px] bg-purple-600 text-white px-1 rounded font-bold shadow-xs">AI</span>' : ''}
+                                </div>
                             </div>
-                            <div class="flex items-center gap-1 shrink-0" onclick="event.stopPropagation();">
-                                <button onclick="dodajUPrint('${clan.id_sistema}')" title="Dodaj u ispis" class="text-gray-400 hover:text-green-600 p-1 text-[13px] transition">
-                                    <i class="fa-solid fa-print"></i>
-                                </button>
-                                ${jeAIPreporuka ? '<span class="text-[8px] bg-purple-600 text-white px-1 rounded font-bold shadow-xs">AI</span>' : ''}
+                            <div class="skrati-tekst text-gray-600 mt-1 text-[11px] leading-normal">
+                                ${formatiranTekst}
                             </div>
                         </div>
-                        <div class="skrati-tekst text-gray-600 mt-1 text-[11px] leading-normal">
-                            ${formatiranTekst}
+                        <div class="mt-2 pt-1 border-t border-gray-100 text-[10px] text-gray-400 font-medium truncate">
+                            <i class="fa-solid fa-scale-balanced text-gray-300 mr-1"></i>${clan.naziv_zakona}
                         </div>
-                    </div>
-                    <div class="mt-2 pt-1 border-t border-gray-100 text-[10px] text-gray-400 font-medium truncate">
-                        <i class="fa-solid fa-scale-balanced text-gray-300 mr-1"></i>${clan.naziv_zakona}
-                    </div>
-                `;
+                    `;
                     mrezaKartica.appendChild(card);
                 });
 
@@ -680,8 +673,6 @@
             document.getElementById('member-modal').classList.remove('hidden');
         }
 
-        function zatvoriModal() { document.getElementById('member-modal').classList.add('hidden'); }
-
         async function traziAI() {
             const izabraniModel = document.getElementById('ai-model-select').value;
             const problemText = document.getElementById('ai-problem').value.trim();
@@ -703,31 +694,31 @@
                 const finalniKontekstZakona = generisiKontekstZakona(aktivniZakoniPodaci, trenutniModel);
 
                 const sistemskiPrompt = `
-            Ti si napredni i visoko specijalizovani AI asistent obučen za analizu normativnih akata, pravila i zakona Univerziteta.
-            Zaboravi svu prethodnu memoriju razgovora i fokusiraj se isključivo na dostavljeni kontekst.
+                Ti si napredni i visoko specijalizovani AI asistent obučen za analizu normativnih akata, pravila i zakona Univerziteta.
+                Zaboravi svu prethodnu memoriju razgovora i fokusiraj se isključivo na dostavljeni kontekst.
 
-            [STRIKTNA VREMENSKA I KOLIČINSKA NORMA]:
-            Unutar obavezno ne duže od 9 sekundi generiši sažet, stručan i precizan odgovor (maksimalno 400 riječi).
+                [STRIKTNA VREMENSKA I KOLIČINSKA NORMA]:
+                Unutar obavezno ne duže od 9 sekundi generiši sažet, stručan i precizan odgovor (maksimalno 400 riječi).
 
-            [LEGENDA STRUKTURE DOSTAVLJENOG REGISTRA]:
-            Podaci iz aktivne baze su poslani u strogoj strukturi: NAZIV_AKTA|BROJ_ČLANA_ILI_STAVKE|"NASLOV_STAVKE"|UKUPNO_ISTIH_NASLOVA
+                [LEGENDA STRUKTURE DOSTAVLJENOG REGISTRA]:
+                Podaci iz aktivne baze su poslani u strogoj strukturi: NAZIV_AKTA|BROJ_ČLANA_ILI_STAVKE|"NASLOV_STAVKE"|UKUPNO_ISTIH_NASLOVA
 
-            [AKTIVNI KONTEKST REGISTRA KOJI TI JE SELEKTOVAN ZA ANALIZU]:
-            ${finalniKontekstZakona}
+                [AKTIVNI KONTEKST REGISTRA KOJI TI JE SELEKTOVAN ZA ANALIZU]:
+                ${finalniKontekstZakona}
 
-            ZADATAK:
-            1. Analiziraj korisnički unos/problem i mapiraj ga isključivo na stavke koje se nalaze u učitanom kontekstu iznad.
-            2. Donesi analitičko obrazloženje i obavezno navedi tačne članove/stavke i puni naziv koji rješava ili opisuje situaciju.
+                ZADATAK:
+                1. Analiziraj korisnički unos/problem i mapiraj ga isključivo na stavke koje se nalaze u učitanom kontekstu iznad.
+                2. Donesi analitičko obrazloženje i obavezno navedi tačne članove/stavke i puni naziv koji rješava ili opisuje situaciju.
 
-            STROGO PRAVILO ZA FORMAT:
-            Vrati ODGOVOR ISKLJUČIVO KAO VALIDAN JSON OBJEKAT sa sljedećom strukturom:
-            {
-                "objasnjenje": "Stručno obrazloženje problema sa referencama...",
-                "predlozeni_clanovi": [
-                    {"zakon": "Točan Puni Naziv Akta Iz Registra", "clan": "Broj člana ili stavke"}
-                ]
-            }
-            `;
+                STROGO PRAVILO ZA FORMAT:
+                Vrati ODGOVOR ISKLJUČIVO KAO VALIDAN JSON OBJEKAT sa sljedećom strukturom:
+                {
+                    "objasnjenje": "Stručno obrazloženje problema sa referencama...",
+                    "predlozeni_clanovi": [
+                        {"zakon": "Točan Puni Naziv Akta Iz Registra", "clan": "Broj člana ili stavke"}
+                    ]
+                }
+                `;
 
                 const response = await fetch(AI_API_URL, {
                     method: 'POST',
