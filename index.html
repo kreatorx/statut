@@ -1002,6 +1002,10 @@ document.getElementById('laws-container').scrollTop = 0;
             filtrirajPrikaz();
         }
 
+        function zatvoriModal() {
+            document.getElementById('member-modal').classList.add('hidden');
+        }
+
         window.onclick = function (e) { if (e.target == document.getElementById('member-modal')) zatvoriModal(); }
         window.onload = ucitajSveZakone;
     </script>
