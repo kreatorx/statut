@@ -1,0 +1,125 @@
+{
+  "header": "Pravilnik o tehničkim karakteristikama diplomskog, magistarskog i doktorskog rada Univerziteta u Zenici",
+  "clanovi": [
+    {
+      "clan_broj": "1",
+      "glava": "I OSNOVNE ODREDBE",
+      "naslov": "(Predmet Pravilnika)",
+      "tekst": "(1) Ovim Pravilnikom uređuju se osnovni elementi tehničkih karakteristika diplomskog, magistarskog i doktorskog rada Univerziteta u Zenici (u daljem tekstu: Univerzitet). (2) Tehničke karakteristike diplomskog, magistarskog i doktorskog rada odnose se na: a) prijelom i tehničke karakteristike prijeloma rada; i b) tehničke elemente strukture rada."
+    },
+    {
+      "clan_broj": "2",
+      "glava": "I OSNOVNE ODREDBE",
+      "naslov": "(Završni radovi)",
+      "tekst": "(1) Diplomski rad je završni rad dodiplomskog studija, odnosno pisani rad studenta koji je izvršio sve obaveze utvrđene nastavnim planom i programom, Statutom Univerziteta i drugim općim aktima, nakon ovjerenog posljednjeg semestra studija i položenih svih ispita. (2) Magistarski rad je završni rad magistarskog studija, odnosno predstavlja samostalan naučnoistraživački i stručni rad kandidata, kojim on pokazuje da je ovladao određenom problematikom i da može samostalno postavljati i rješavati naučnoistraživačke i stručne probleme i zadatke. (3) Doktorski rad je završni rad doktorskog studija, odnosno predstavlja samostalan originalan naučnoistraživački rad kandidata u kojem on pokazuje da koristi naučne metode i istraživačke tehnike u užem području istraživanja, te da kreativno rješava kompleksne probleme iz prakse."
+    },
+    {
+      "clan_broj": "3",
+      "glava": "I OSNOVNE ODREDBE",
+      "naslov": "(Jezik rada)",
+      "tekst": "(1) Rad se piše na jednom od službenih jezika Bosne i Hercegovine ili na nekom od svjetskih jezika. (2) Naslov, sažetak i ključne riječi rada moraju biti, uz originalni jezik rada, napisani i na jednom od svjetskih jezika. (3) Ukoliko je rad napisan na jednom od svjetskih jezika, onda naslov, sažetak i ključne riječi rada moraju biti napisani na jednom od službenih jezika Bosne i Hercegovine. (4) Rad je lektoriran u skladu s jezičkim standardom i normom jezika na kojem je pisan."
+    },
+    {
+      "clan_broj": "4",
+      "glava": "I OSNOVNE ODREDBE",
+      "naslov": "(Mjerne jedinice)",
+      "tekst": "U svim radovima obavezno se primjenjuje Međunarodni sistem (SI) mjernih jedinica (Système International d'Unités)."
+    },
+    {
+      "clan_broj": "5",
+      "glava": "II PRIJELOM I TEHNIČKE KARAKTERISTIKE PRIJELOMA RADA",
+      "naslov": "(Format rada)",
+      "tekst": "(1) Rad se štampa na papiru, jednostrano, prelomljen kao kompjuterski ispis, u formatu A4 (210x297 mm). (2) Margine rada iznose po 25 mm s lijeve i desne strane (lijeva i desna margina), te po 25 mm prema gore i prema dolje (gornja i donja margina)."
+    },
+    {
+      "clan_broj": "6",
+      "glava": "II PRIJELOM I TEHNIČKE KARAKTERISTIKE PRIJELOMA RADA",
+      "naslov": "(Uvez rada)",
+      "tekst": "(1) Diplomski rad uvezuje se mehkim uvezom i ima mehke korice. (2) Magistarski rad i doktorski rad uvezuje se tvrdim uvezom i ima tvrde korice."
+    },
+    {
+      "clan_broj": "7",
+      "glava": "II PRIJELOM I TEHNIČKE KARAKTERISTIKE PRIJELOMA RADA",
+      "naslov": "(Broj umnoženih primjeraka)",
+      "tekst": "(1) Diplomski rad umnožava se u najmanje 4 (četiri) primjerka, te se po jedan primjerak rada dodjeljuje članovima komisije za odbranu i biblioteci fakulteta. (2) Magistarski rad i doktorski rad umnožava se u najmanje 10 (deset) primjeraka, uz obavezu dostavljanja 2 (dva) štampana primjerka za biblioteku fakulteta na kojoj je rad odbranjen, 2 (dva) štampana primjerka za Univerzitetsku biblioteku Univerziteta i 2 (dva) štampana primjerka za Nacionalnu i univerzitetsku biblioteku Bosne i Hercegovine."
+    },
+    {
+      "clan_broj": "8",
+      "glava": "II PRIJELOM I TEHNIČKE KARAKTERISTIKE PRIJELOMA RADA",
+      "naslov": "(Paginacija)",
+      "tekst": "(1) Sve stranice rada moraju biti paginirane, odnosno označene brojčanim oznakama. (2) Sve stranice rada označavaju se arapskim brojevima, a prilozi, ukoliko ih ima, rimskim brojevima."
+    },
+    {
+      "clan_broj": "9",
+      "glava": "II PRIJELOM I TEHNIČKE KARAKTERISTIKE PRIJELOMA RADA",
+      "naslov": "(Font)",
+      "tekst": "(1) Rad se štampa fontom Times New Roman, veličina (Font size) 12, bez bolda, prored (Line spacing) 1,5 – s poravnanjem složenim u blok (poravnanje Justify). Istim parametrima se štampaju bibliografska kartica, sheme, tablice i svi tome slični elementi rada. (2) Naslovi poglavlja štampaju se fontom Times New Roman, veličina (Font size) 14, boldirano, prored (Line spacing) 1,5 – s poravnanjem ulijevo (Align left). (3) Podnaslovi, odnosno naslovi koji su podređeni naslovima poglavlja, štampaju se fontom Times New Roman, veličina (Font size) 12, boldirano, prored (Line spacing) 1,5 – s poravnanjem ulijevo (Align left). (4) Podaci na naslovnoj stranici rada štampaju se fontom Times New Roman, i to: a) naziv Univerziteta: velikim štampanim slovima, veličine fonta (Font size) 14, neboldirano, centrirano poravnanje (Center); b) naziv organizacione jedinice (fakulteta): malim štampanim slovima, veličine fonta (Font size) 14, neboldirano, centrirano poravnanje (Center); c) naziv odsjeka organizacione jedinice (fakulteta) – navodi se u diplomskim i magistarskim radovima: malim štampanim slovima, veličine fonta (Font size) 12, neboldirano, centrirano poravnanje (Center); d) naziv predmeta iz kojeg je pisan rad – navodi se u diplomskim radovima – malim štampanim slovima, veličine fonta (Font size) 12, neboldirano, centrirano poravnanje (Center); e) ime i prezime autora: malim štampanim slovima, veličina fonta (Font size) 14, neboldirano, centrirano poravnanje (Center); f) puni naslov rada: velikim štampanim slovima, veličina fonta (Font size) 16, boldirano, centrirano poravnanje (Center); g) podnaslov rada u kojem je navedena vrsta rada (diplomski, magistarski ili doktorski rad): malim štampanim slovima, veličina fonta (Font size) 14, italikom, neboldirano, centrirano poravnanje (Center); h) ime i prezime mentora i komentora (ukoliko postoji): malim štampanim slovima, veličina fonta (Font size) 14, neboldirano, lijevo poravnanje (Align text left); i) mjesto i godina odbrane: malim štampanim slovima, veličina fonta (Center) 14, neboldirano, centrirano poravnanje (Center). (5) Podaci na prednjoj korici rada štampaju se identično kao i na naslovnoj stranici rada. (6) Na hrhatu doktorskog rada, ukoliko za to postoje tehnički uvjeti, navodi se ime i prezime doktoranda, puni naslov rada i u podnaslovu doktorska disertacija. (7) Sve vrste bilješki koje se navode u fusnoti (Footnote) štampaju se fontom Times New Roman, veličina (Font size) 10, bez bolda, prored (Line spacing) 1 – s poravnanjem složenim u blok (poravnanje Justify). (8) Sve oznake za paginaciju (broj stranica) štampaju se fontom Times New Roman, veličina (Font size) 12, bez bolda, – s centriranim poravnanjem (Center)."
+    },
+    {
+      "clan_broj": "10",
+      "glava": "III TEHNIČKI ELEMENTI STRUKTURE RADA",
+      "naslov": "(Tehnički elementi strukture rada)",
+      "tekst": "(1) Diplomski rad mora uključivati sljedeće elemente: a) korična stranica (naslovna stranica na prednjoj korici rada); b) naslovna stranica (prva stranica rada); c) sadržaj rada; d) tekst rada; e) prilozi rada (ukoliko za to postoji potreba); f) popis korištenih oznaka (ukoliko za to postoji potreba); g) popis ilustracija i tabela (ukoliko za to postoji potreba). (2) Magistarski rad i doktorski rad mora uključivati sljedeće tehničke elemente strukture: a) korična stranica (naslovna stranica na prednjoj korici rada); b) naslovna stranica (prva stranica rada); c) bibliografska kartica (druga stranica rada); d) sažetak rada na izvornom jeziku rada sadrži najviše 300 (tri stotine) riječi, te uključuje i ključne riječi (najviše pet riječi); e) sažetak rada na jednom svjetskom jeziku sadrži najviše 300 (tri stotine) riječi, te uključuje prijevod naslova rada i prijevod ključnih riječi (najviše pet riječi); f) sadržaj rada; g) tekst rada (uvod – opis problema, odnosno istraživanja – hipoteza rada – zaključak rada – bibliografija); h) prilozi rada (ukoliko za to postoji potreba); i) popis korištenih oznaka (ukoliko za to postoji potreba); j) popis ilustracija i tabela (ukoliko za to postoji potreba); k) kratka biografija autora (ukoliko za to postoji potreba). (3) Ukoliko postoji potreba, rad, nakon bibliografske kartice, može sadržavati i zahvalu autora osobama koje su mu pružile pomoć tokom izrade rada. (4) Tehnički elementi strukture rada prelomljeni su, odnosno navode se redoslijedom navedenim u ovom članu Pravilnika, stavovi (1) i (2)."
+    },
+    {
+      "clan_broj": "11",
+      "glava": "III TEHNIČKI ELEMENTI STRUKTURE RADA",
+      "naslov": "(Bibliografska kartica)",
+      "tekst": "Bibliografska kartica rada sadrži sljedeće elemente: a) naučno područje rada; b) naučno polje rada; c) naučna grana rada; d) naziv ustanove u kojoj je rad izrađen; e) naziv odsjeka fakulteta (kod diplomskih i magistarskih radova); f) ime i prezime mentora rada; g) ime i prezime komentora rada (ukoliko postoji); h) datum odbrane rada; i) članovi komisije za odbranu rada."
+    },
+    {
+      "clan_broj": "12",
+      "glava": "III TEHNIČKI ELEMENTI STRUKTURE RADA",
+      "naslov": "(Sastavni dijelovi magistarskog rada i doktorskog rada)",
+      "tekst": "(1) Dio rada u kojem je prezentirana naučnoistraživačka i stručna komponenta magistarskog rada i doktorskog rada, te komponente rada koje se odnose na teorijski i praktični aspekt istraživanja, sastoji se od sljedećih elemenata koji trebaju biti elaborirani sljedećim redoslijedom: a. uvod, dio rada u kojem se definira problem istraživanja, te pravi osvrt na ranija i postojeća istraživanja teme rada; b. opis problema, odnosno istraživanja, dio rada u kojem se raščlanjuje i problematizira tema istraživanja, raspravlja se o samom problemu, te u kojem je opisana metoda istraživanja, materijal i postupci istraživanja, s posebnim osvrtom na opis rezultata kojima se potvrđuje ili ne potvrđuje hipoteza rada; c. hipoteza rada, dio rada u kojem se navode i elaboriraju hipoteze istraživanja, odnosno sudovi za koje se pretpostavlja da su tačni, a čija će se istinitost dokazati ili osporiti u narednim dijelovima rada; d. zaključak rada, dio rada u kojem se eksplicitno i jasno ističu glavni rezultati istraživanja s posebnim akcentom na opis stručnog, kao i originalnog naučnog doprinosa istraživanja, s jasnim preporukama u kojim se smjerovima istraživanje može dalje nastaviti; e. bibliografija (dio rada u kojem je na standardiziran način navedena lista svih bibliografskih podataka o literaturi i drugim izvorima kojima se autor služio, a na temelju kojih čitatelj može provjeriti iskaze i tvrdnje autora). (2) Svako poglavlje i potpoglavlje označavaju se arapskim rednim brojevima tako da ilustriraju metodologiju istraživanja i hijerarhiju problema, naprimjer: 1.1. , 1.1.1, 1.1.2., 1.2., 1.2.1., itd. (3) Svako novo poglavlje počinje novom stranicom."
+    },
+    {
+      "clan_broj": "13",
+      "glava": "III TEHNIČKI ELEMENTI STRUKTURE RADA",
+      "naslov": "(Citiranje)",
+      "tekst": "(1) Autor sve citate navodi standardiziranim sistemom citiranja, odnosno u cijelom radu dosljedno se služi istim načinom navođenja bibliografskih bilješki. (2) Autor sve nebibliografske bilješke uz tekst navodi u fusnotama (Footnote). (3) Autor je dužan da bibliografiju rada navede u standardiziranoj formi, odnosno da je način navođenja bibliografije rada komplementaran sa sistemom citiranja."
+    },
+    {
+      "clan_broj": "14",
+      "glava": "III TEHNIČKI ELEMENTI STRUKTURE RADA",
+      "naslov": "(Prilozi rada)",
+      "tekst": "(1) Prilozi rada mogu biti tabele, grafički prikazi, sheme, tehnički crteži, formulari, fotografije, faksimili, odnosno sve vrste ilustracija, kao i svi potrebni popratni dokumenti kojima se dodatno potkrepljuju ili ilustriraju rezultati istraživanja, odnosno dokumenti koji su bili sastavni dio istraživanja (naprimjer, anketni listovi). (2) Prilozi rada mogu biti pohranjeni na CD-ROM-u koji je, kao takav, fizički povezan uz štampanu svesku rada kao njegov prilog. U takvom slučaju, na CD-ROM-u su navedeni ime i prezime autora, puni ili skraćeni naslov i puni podnaslov rada. (3) Prilozi rada ne moraju biti navedeni u posebnom prilogu, nego se mogu prezentirati u okviru teksta rada kao njegov sastavni dio. U takvom slučaju, svi prilozi moraju biti označeni brojčanim (arapskim) oznakama i naslovima priloga u kojima je objašnjeno što prilog prikazuje ili označava."
+    },
+    {
+      "clan_broj": "15",
+      "glava": "III TEHNIČKI ELEMENTI STRUKTURE RADA",
+      "naslov": "(Popis korištenih oznaka)",
+      "tekst": "Ukoliko postoji potreba, u radu se navodi popis korištenih oznaka, a posebno popis korištenih mjernih jedinica, kratica ili akronima, s njihovim punim nazivima."
+    },
+    {
+      "clan_broj": "16",
+      "glava": "III TEHNIČKI ELEMENTI STRUKTURE RADA",
+      "naslov": "(Popis ilustracija i tabela)",
+      "tekst": "Ukoliko postoji potreba, u radu se navodi popis ilustracija i tabela navedenih u radu, s njihovim rednim brojevima."
+    },
+    {
+      "clan_broj": "17",
+      "glava": "III TEHNIČKI ELEMENTI STRUKTURE RADA",
+      "naslov": "(Biografija autora)",
+      "tekst": "(1) Ukoliko za to postoji potreba, u radu se navodi biografija autora. (2) Biografija autora rada može zauzimati najviše jednu stranicu rada u kojoj će biti navedeni osnovni biografski podaci o autoru, njegovom obrazovanju i karijeri, te objavljenim radovima."
+    },
+    {
+      "clan_broj": "18",
+      "glava": "III PRIJELAZNE I ZAVRŠNE ODREDBE",
+      "naslov": "(Aneks Pravilnika)",
+      "tekst": "Sastavni dio ovog Pravilnika čine aneksi, pod nazivom: a) Korična i naslovna strana doktorskog rada – format A4; b) Korična i naslovna strana magistarskog rada – format A4; i c) Bibliografska kartica."
+    },
+    {
+      "clan_broj": "19",
+      "glava": "III PRIJELAZNE I ZAVRŠNE ODREDBE",
+      "naslov": "(Provedba Pravilnika)",
+      "tekst": "(1) Ovaj Pravilnik primjenjuje se za sve postupke iz domena tehničke izrade i prijeloma teksta, te tehničkog koncepta i tehničkog sadržaja diplomskog, magistarskog i doktorskog rada Univerziteta. (2) Nadzor nad provedbom ovog Pravilnika vrše nadležni organi organizacionih jedinica, a tumačenje Pravilnika vrši Senat Univerziteta."
+    },
+    {
+      "clan_broj": "20",
+      "glava": "III PRIJELAZNE I ZAVRŠNE ODREDBE",
+      "naslov": "(Stupanje na snagu Pravilnika)",
+      "tekst": "Pravilnik o izdavačkoj djelatnosti stupa na snagu danom donošenja."
+    }
+  ]
+}

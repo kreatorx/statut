@@ -1,0 +1,59 @@
+{
+  "header": "Pravilnik o repozitorijima doktorskih i magistarskih radova Univerziteta u Zenici",
+  "clanovi": [
+    {
+      "clan_broj": "1",
+      "glava": "I OSNOVNE ODREDBE",
+      "naslov": "(Predmet Pravilnika)",
+      "tekst": "Ovim Pravilnikom regulira se način formiranja i uređenja Repozitorija doktorskih radova i Repozitorija magistarskih radova Univerziteta u Zenici (u daljem tekstu: repozitoriji) kao jedinstvenih baza podataka koje će se sastojati od doktorskih i magistarskih radova, pohranjenih u elektronskom obliku, odbranjenih na Univerzitetu u Zenici (u daljem tekstu: Univerzitet)."
+    },
+    {
+      "clan_broj": "2",
+      "glava": "I OSNOVNE ODREDBE",
+      "naslov": "(Repozitoriji)",
+      "tekst": "(1) U repozitorije se pohranjuju doktorski i magistarski radovi, u elektronskom obliku, u Portable Document Formatu (PDF/A), koji su odbranjeni na magistarskom i doktorskom studiju Univerziteta u Zenici, od dana stupanja na snagu ovog Pravilnika, uz saglasnost autora. (2) U Repozitorij doktorskih radova, koji će biti dostupan na web-stranici Univerziteta, pohranjuju se doktorske disertacije, a u repozitorije magistarskih radova, koji će biti dostupni na web-stranicama fakulteta Univerziteta, pohranjuju se magistarski radovi odbranjeni na tim fakultetima."
+    },
+    {
+      "clan_broj": "3",
+      "glava": "I OSNOVNE ODREDBE",
+      "naslov": "(Rad u elektronskom obliku)",
+      "tekst": "(1) Kandidat, uz štampanu i ukoričenu verziju doktorskog ili magistarskog rada, prilaže i rad u elektronskom obliku (PDF/A fajlu) pogodnom za trajno arhiviranje. (2) Rad u elektronskom obliku (PDF/A fajlu) potpuno je istovjetan svojoj pisanoj/štampanoj varijanti. (3) Naziv elektronskog fajla rada daje se po prezimenu i imenu kandidata."
+    },
+    {
+      "clan_broj": "4",
+      "glava": "I OSNOVNE ODREDBE",
+      "naslov": "(Prilozi elektronskom obliku rada)",
+      "tekst": "(1) Rad u elektronskom obliku (PDF/A fajlu), obavezno sadrži sljedeće priloge: a) Skeniranu vlastoručno potpisanu izjavu o autorstvu u kojoj stoji da je rad rezultat autorovog istraživačkog rada i da on nije kršio autorska prava drugih lica; b) Skeniranu vlastoručno potpisanu izjavu da je elektronski oblik rada (PDF/A fajl) istovjetan njegovoj štampanoj ukoričenoj verziji; c) Skeniranu vlastoručno potpisanu izjavu da Univerzitet, odnosno njegove organizacione jedinice, imaju pravo da elektronsku verziju rada pohrane u digitalni repozitorij Univerziteta, odnosno fakulteta, odnosno da imaju pravo činjenja dostupnim javnosti njegov rad. (2) Obrasci izjava kandidata su sastavni dio ovog Pravilnika, definirani u aneksu Pravilnika."
+    },
+    {
+      "clan_broj": "5",
+      "glava": "I OSNOVNE ODREDBE",
+      "naslov": "(Prilozi u štampanoj verziji rada)",
+      "tekst": "Ukoričena štampana verzija rada, sadrži iste priloge kao i njena verzija u elektronskom obliku koji su definirani u prethodnom članu ovog Pravilnika."
+    },
+    {
+      "clan_broj": "6",
+      "glava": "I OSNOVNE ODREDBE",
+      "naslov": "(Dostava i pohrana rada)",
+      "tekst": "(1) Doktorski rad u elektronskom obliku, odnosno PDF/A fajl pohranjen na CD-u (Compact Discu), zajedno s istovjetnom štampanom varijantom rada koja je ukoričena, dostavlja se Univerzitetskoj biblioteci Univerziteta u Zenici koja ih trajno čuva. (2) Magistarski rad u elektronskom obliku, odnosno PDF/A fajl pohranjen na CD-u (Compact Discu), zajedno s istovjetnom štampanom varijantom rada koja je ukoričena, dostavlja se biblioteci fakulteta Univerziteta na kojoj je odbranjen rad, koja ih trajno čuva. (3) Biblioteke elektronske verzije rada (PDF/A fajlove) dostavljaju web-administratoru Univerziteta, odnosno fakulteta, da ih pohrani u odgovarajući repozitorij i tako učini dostupnim javnosti."
+    },
+    {
+      "clan_broj": "7",
+      "glava": "II PRIJELAZNE I ZAVRŠNE ODREDBE",
+      "naslov": "(Aneks Pravilnika)",
+      "tekst": "Sastavni dio ovog Pravilnika čine aneksi, pod nazivom: a) Izjava o autorstvu; b) Izjava o istovjetnosti štampane i elektronske verzije rada; c) Izjava o korištenju."
+    },
+    {
+      "clan_broj": "8",
+      "glava": "II PRIJELAZNE I ZAVRŠNE ODREDBE",
+      "naslov": "(Primjena i provedba Pravilnika)",
+      "tekst": "(1) Ovaj Pravilnik primjenjuje se za sve postupke nakon formiranja repozitorijâ doktorskih i magistarskih radova Univerziteta. (2) Nadzor nad provedbom ovog Pravilnika vrše prorektor za naučnoistraživački rad Univerziteta i prodekani za naučnoistraživački rad fakulteta Univerziteta."
+    },
+    {
+      "clan_broj": "9",
+      "glava": "II PRIJELAZNE I ZAVRŠNE ODREDBE",
+      "naslov": "(Stupanje na snagu Pravilnika)",
+      "tekst": "Ovaj Pravilnik stupa na snagu danom donošenja."
+    }
+  ]
+}
