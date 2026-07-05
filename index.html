@@ -7,11 +7,23 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #f1f1f1; }
-        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
-        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
-        
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 3px;
+        }
+
+            ::-webkit-scrollbar-thumb:hover {
+                background: #94a3b8;
+            }
+
         .skrati-tekst {
             display: -webkit-box;
             -webkit-line-clamp: 4;
@@ -34,19 +46,19 @@
         </header>
 
         <main class="flex-grow max-w-7xl w-full mx-auto p-3 grid grid-cols-1 lg:grid-cols-3 gap-4">
-            
+
             <div class="lg:col-span-1 flex flex-col gap-3">
-                
+
                 <div class="bg-white p-3 rounded-lg shadow-sm border border-gray-200">
                     <div class="flex items-center gap-1.5 mb-2 text-gray-700 font-semibold text-sm border-b pb-1">
                         <i class="fa-solid fa-folder-tree text-xs text-blue-900"></i>
                         <h2>Dostupni registri i sekcije</h2>
                     </div>
-                    
-                    <div class="space-y-2" id="law-selectors">
+
+                    <div class="space-y-3" id="law-selectors">
                         <div class="text-gray-400 italic py-2">Učitavanje konfiguracije...</div>
                     </div>
-                    
+
                     <div class="mt-3 pt-2 border-t border-gray-100 space-y-1.5">
                         <div class="flex justify-between items-center text-[10px]">
                             <span class="text-gray-500 font-medium">Ukupno slova za AI:</span>
@@ -58,7 +70,7 @@
                         </div>
                     </div>
                 </div>
-             
+
                 <div class="bg-white p-3 rounded-lg shadow-sm border border-gray-200">
                     <div class="flex items-center justify-between gap-1.5 mb-1.5 text-purple-700 font-semibold text-sm border-b pb-1">
                         <div class="flex items-center gap-1.5">
@@ -135,7 +147,7 @@
             </div>
 
             <div class="lg:col-span-2 flex flex-col gap-3">
-                
+
                 <div class="hidden lg:block">
                     <div id="ai-response-box-desktop" class="hidden bg-purple-50 p-3 rounded-lg border border-purple-200 shadow-sm">
                         <div class="flex justify-between items-start mb-1">
@@ -159,7 +171,7 @@
                         <span id="results-title" class="font-bold text-gray-700 text-xs">Sadržaj baze podataka</span>
                         <span id="results-count" class="bg-gray-200 text-gray-700 px-1.5 py-0.5 rounded text-[11px] font-bold">0</span>
                     </div>
-                    
+
                     <div class="flex items-center gap-3 ml-auto sm:ml-0">
                         <div class="flex items-center bg-white border border-gray-300 rounded p-0.5">
                             <button onclick="promijeniLayout('list')" id="btn-layout-list" class="px-2 py-0.5 rounded text-xs transition-all font-medium bg-blue-600 text-white">
@@ -169,7 +181,7 @@
                                 <i class="fa-solid fa-th-large mr-1"></i>Mreža
                             </button>
                         </div>
-                        
+
                         <div id="kolone-select-wrapper" class="hidden flex items-center gap-1 text-xs">
                             <span class="text-gray-500">Kolone:</span>
                             <select id="grid-columns" onchange="promijeniKolone()" class="bg-white border border-gray-300 rounded p-0.5 focus:outline-none">
@@ -192,7 +204,7 @@
     </div>
 
     <div id="member-modal" class="fixed inset-0 bg-slate-950/40 backdrop-blur-sm flex items-center justify-center p-4 z-50 hidden" onclick="zatvoriModal()">
-        <div class="bg-white rounded-xl shadow-2xl max-w-3xl w-full max-h-[85vh] flex flex-col overflow-hidden border border-gray-100" onclick="event.stopPropagation()">    
+        <div class="bg-white rounded-xl shadow-2xl max-w-3xl w-full max-h-[85vh] flex flex-col overflow-hidden border border-gray-100" onclick="event.stopPropagation()">
             <div class="px-5 py-3.5 border-b border-gray-100 flex items-center justify-between bg-gray-50/80">
                 <div class="flex items-center gap-2.5 min-w-0">
                     <span id="modal-badge" class="px-2 py-0.5 bg-blue-50 text-blue-700 border border-blue-100 text-[10px] font-bold rounded uppercase tracking-wider shrink-0"></span>
@@ -213,645 +225,703 @@
     </div>
 
     <script>
-const AI_API_URL = 'https://zakon-nine.vercel.app/api/chat';
-let sviZakonPodaci = [];
-let ucitaniIzvori = [];
-let trenutniPrikazaniClanovi = [];
-let globalniIstaknutiKljucevi = [];
-let listaZaPrint = []; 
-let trenutniLayout = 'list'; 
+        const AI_API_URL = 'https://zakon-nine.vercel.app/api/chat';
+        let sviZakonPodaci = [];
+        let ucitaniIzvori = [];
+        let trenutniPrikazaniClanovi = [];
+        let globalniIstaknutiKljucevi = [];
+        let listaZaPrint = [];
+        let trenutniLayout = 'list';
 
-const PALETA_BOJA = ['blue', 'emerald', 'amber', 'lime', 'purple', 'sky', 'rose', 'teal', 'indigo', 'orange', 'cyan'];
+        // Konfiguracija grupa prema vašem json fajlu
+        const STRUKTURA_KATEGORIJA = {
+            "statut": { naziv: "Statut", klasaBordera: "border-blue-500" },
+            "eticki_kodeks": { naziv: "Etički kodeks", klasaBordera: "border-purple-500" },
+            "pravilnici": { naziv: "Pravilnici i poslovnici", klasaBordera: "border-emerald-500" }
+        };
 
-function izvuciTekstClana(clan) {
-    if (clan.tekst && clan.tekst.trim() !== "") {
-        return `<p class="leading-normal">${clan.tekst}</p>`;
-    }
-    if (clan.segmenti && clan.segmenti.length > 0) {
-        let html = `<div class="space-y-1">`;
-        clan.segmenti.forEach(seg => {
-            if (typeof seg === 'object' && seg !== null) {
-                const kljuc = Object.keys(seg)[0] || '';
-                const vrijednost = seg[kljuc] || '';
-                html += `<p><span class="font-semibold text-blue-900">${kljuc}:</span> ${vrijednost}</p>`;
-            } else if (typeof seg === 'string') {
-                html += `<p>${seg}</p>`;
+        function izvuciTekstClana(clan) {
+            if (clan.tekst && clan.tekst.trim() !== "") {
+                return `<p class="leading-normal">${clan.tekst}</p>`;
             }
-        });
-        html += `</div>`;
-        return html;
-    }
-    return `<p class="italic text-gray-400">Sadržaj prazan.</p>`;
-}
+            if (clan.segmenti && clan.segmenti.length > 0) {
+                let html = `<div class="space-y-1">`;
+                clan.segmenti.forEach(seg => {
+                    if (typeof seg === 'object' && seg !== null) {
+                        const kljuc = Object.keys(seg)[0] || '';
+                        const vrijednost = seg[kljuc] || '';
+                        html += `<p><span class="font-semibold text-blue-900">${kljuc}:</span> ${vrijednost}</p>`;
+                    } else if (typeof seg === 'string') {
+                        html += `<p>${seg}</p>`;
+                    }
+                });
+                html += `</div>`;
+                return html;
+            }
+            return `<p class="italic text-gray-400">Sadržaj prazan.</p>`;
+        }
 
-async function ucitajSveZakone() {
-    document.getElementById('search-stats').innerText = `Učitavanje konfiguracije...`;
-    sviZakonPodaci = [];
-    ucitaniIzvori = [];
-    
-    try {
-        const spisakResponse = await fetch('./spisak_zakona.json');
-        if (!spisakResponse.ok) throw new Error("Spisak (spisak_zakona.json) nedostaje.");
-        const fajlovi = await spisakResponse.json();
+        async function ucitajSveZakone() {
+            document.getElementById('search-stats').innerText = `Učitavanje konfiguracije...`;
+            sviZakonPodaci = [];
+            ucitaniIzvori = [];
 
-        // Prihvatamo fajlove koji počinju brojem
-        const validniFajlovi = fajlovi.filter(f => /^\d+/.test(f));
-        let indeksBoje = 0;
-
-        for (const fajl of validniFajlovi) {
             try {
-                const response = await fetch(`./${fajl}`);
-                if (!response.ok) throw new Error(`Status: ${response.status}`);
-                const podaci = await response.json();
-                
-                // 1. PROCEDURALNA DETEKCIJA NIZA (Rješenje za "podaci.map is not a function")
-                let nizClanova = [];
-                if (Array.isArray(podaci)) {
-                    nizClanova = podaci;
-                } else if (podaci && typeof podaci === 'object') {
-                    const pronadjeniKljuc = Object.keys(podaci).find(k => Array.isArray(podaci[k]));
-                    if (pronadjeniKljuc) {
-                        nizClanova = podaci[pronadjeniKljuc];
-                    } else {
-                        throw new Error("JSON nema validnu strukturu niza niti unutrašnjeg niza.");
+                const spisakResponse = await fetch('./spisak_zakona.json');
+                if (!spisakResponse.ok) throw new Error("Spisak (spisak_zakona.json) nedostaje.");
+                const kategorizovaniFajlovi = await spisakResponse.json();
+
+                // Prolazimo kroz tri definisane kategorije (statut, eticki_kodeks, pravilnici)
+                for (const [kategorijaKljuc, fajlovi] of Object.entries(kategorizovaniFajlovi)) {
+                    if (!Array.isArray(fajlovi)) continue;
+
+                    for (const fajl of fajlovi) {
+                        try {
+                            // ODREDIVANJE DETALJNE PUTANJE: Statut ide iz root-a, ostali iz foldera 'pravilnici'
+                            const putanjaFajla = (kategorijaKljuc === "statut")
+                                ? `./${fajl}`
+                                : `./pravilnici/${fajl}`;
+
+                            const response = await fetch(putanjaFajla);
+                            if (!response.ok) throw new Error(`Status: ${response.status}`);
+                            const podaci = await response.json();
+
+                            let nizClanova = [];
+                            let naslovDokumenta = fajl.replace(/^\d+[\._]/, '').replace('.json', '').replace(/_/g, ' ');
+
+                            if (podaci && typeof podaci === 'object') {
+                                if (podaci.header) {
+                                    naslovDokumenta = podaci.header;
+                                }
+                                if (Array.isArray(podaci.clanovi)) {
+                                    nizClanova = podaci.clanovi;
+                                } else if (Array.isArray(podaci)) {
+                                    nizClanova = podaci;
+                                } else {
+                                    const pronadjeniKljuc = Object.keys(podaci).find(k => Array.isArray(podaci[k]));
+                                    if (pronadjeniKljuc) nizClanova = podaci[pronadjeniKljuc];
+                                }
+                            }
+
+                            if (nizClanova.length === 0) continue;
+
+                            const idZakona = fajl.replace('.json', '').toLowerCase();
+
+                            ucitaniIzvori.push({
+                                id: idZakona,
+                                naziv: naslovDokumenta,
+                                kategorija: kategorijaKljuc
+                            });
+
+                            const mapiraniPodaci = nizClanova.map((clan, indeks) => ({
+                                id_sistema: `${idZakona}_${indeks}`,
+                                broj_clana: clan.clan_broj || "N/A",
+                                naziv_clana: clan.naslov || "Bez naslova",
+                                sadrzaj_html: izvuciTekstClana(clan),
+                                cisti_tekst: clan.tekst || (clan.segmenti ? JSON.stringify(clan.segmenti) : ""),
+                                naziv_zakona: naslovDokumenta,
+                                id_zakona: idZakona,
+                                glava: clan.glava || "Opće sekcije"
+                            }));
+
+                            sviZakonPodaci = [...sviZakonPodaci, ...mapiraniPodaci];
+                        } catch (e) {
+                            console.warn(`Preskačem fajl "${fajl}":`, e.message);
+                        }
                     }
                 }
 
-                // 2. EKSTRAKCIJA ID-ja I NAZIVA (Vraćeno nazad u kod)
-                const idZakona = fajl.replace(/^\d+_/, '').replace('.json', '').toLowerCase();
-                let generisaniNaziv = idZakona.replace(/_/g, ' ');
-                generisaniNaziv = generisaniNaziv.split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
-                const temaBoja = PALETA_BOJA[indeksBoje % PALETA_BOJA.length];
-
-                ucitaniIzvori.push({
-                    id: idZakona,
-                    naziv: generisaniNaziv,
-                    theme: temaBoja
-                });
-                indeksBoje++;
-
-                // 3. MAPIRANJE (Sada ispravno koristi 'nizClanova')
-                const mapiraniPodaci = nizClanova.map((clan, indeks) => ({
-                    id_sistema: `${idZakona}_${indeks}`,
-                    broj_clana: clan.clan_broj || "N/A",
-                    naziv_clana: clan.naslov || "Bez naslova",
-                    sadrzaj_html: izvuciTekstClana(clan),
-                    cisti_tekst: clan.tekst || (clan.segmenti ? JSON.stringify(clan.segmenti) : ""),
-                    naziv_zakona: generisaniNaziv,
-                    glava: clan.glava || "Opće sekcije"
-                }));
-                
-                sviZakonPodaci = [...sviZakonPodaci, ...mapiraniPodaci];
-            } catch (e) {
-                console.warn(`Preskačem fajl "${fajl}":`, e.message);
+            } catch (err) {
+                console.error(err);
+                document.getElementById('search-stats').innerText = `Greška pri inicijalizaciji sistema.`;
+                return;
             }
+
+            document.getElementById('search-stats').innerText = `Baza spremna. Stavki: ${sviZakonPodaci.length}`;
+
+            generisiMenijeZakon();
+            postaviLayoutKlase();
+            filtrirajPrikaz();
         }
-    } catch (err) {
-        console.error(err);
-        document.getElementById('search-stats').innerText = `Greška pri inicijalizaciji sistema.`;
-        return;
-    }
-    
-    document.getElementById('search-stats').innerText = `Baza spremna. Stavki: ${sviZakonPodaci.length}`;
-    
-    generisiMenijeZakon();
-    postaviLayoutKlase();
-    filtrirajPrikaz();
-}
 
-function generisiMenijeZakon() {
-    const container = document.getElementById('law-selectors');
-    if (!container) return;
-    
-    let html = `
-        <label class="flex items-center gap-2 p-2 bg-slate-900 text-white rounded-lg cursor-pointer transition shadow-sm mb-2">
-            <input type="checkbox" id="chk-all" onchange="toggleApsolutnoSve(this)" checked class="w-3.5 h-3.5 text-blue-600 border-gray-300 rounded focus:ring-blue-500">
-            <span class="text-xs font-bold">Označi / Pretraži SVE registre</span>
-        </label>
-    `;
+        function generisiMenijeZakon() {
+            const container = document.getElementById('law-selectors');
+            if (!container) return;
 
-    ucitaniIzvori.forEach((izvor) => {
-        const klanoviIzvora = sviZakonPodaci.filter(c => c.naziv_zakona === izvor.naziv);
-        if (klanoviIzvora.length === 0) return;
-
-        const jedinstveneGlave = [...new Set(klanoviIzvora.map(c => c.glava))];
-        const th = izvor.theme;
-        
-        html += `
-        <div class="border border-${th}-300 rounded-lg p-1.5 bg-white">
-            <details class="group overflow-hidden transition-all duration-300">
-                <summary class="flex items-center justify-between p-2 bg-slate-50 rounded-md cursor-pointer select-none border border-gray-200">
-                    <div class="flex items-center" onclick="event.stopPropagation();">
-                        <input type="checkbox" id="master-${izvor.id}" value="${izvor.naziv}" onchange="toggleMaster('${izvor.id}', this)" checked class="w-4 h-4 rounded text-blue-600">
-                        <label for="master-${izvor.id}" class="ml-2 text-xs font-bold text-gray-900 cursor-pointer">${izvor.naziv}</label>
-                    </div>
-                    <span class="text-xs text-gray-400 transition-transform duration-200 group-open:rotate-180 mr-1">▼</span>
-                </summary>
-                <div class="p-2 mt-1.5 ml-1 space-y-1.5 max-h-[250px] overflow-y-auto text-[11px] text-gray-700 pr-1">
+            let html = `
+            <label class="flex items-center gap-2 p-2 bg-slate-900 text-white rounded-lg cursor-pointer transition shadow-sm mb-2">
+                <input type="checkbox" id="chk-all" onchange="toggleApsolutnoSve(this)" checked class="w-3.5 h-3.5 text-blue-600 border-gray-300 rounded focus:ring-blue-500">
+                <span class="text-xs font-bold">Označi / Pretraži SVE registre</span>
+            </label>
         `;
 
-        jedinstveneGlave.forEach((glava) => {
-            const uid = `${izvor.naziv}||${glava}`; 
-            html += `
-                    <label class="flex items-start gap-1.5 cursor-pointer hover:text-gray-950">
-                        <input type="checkbox" class="slave-chk slave-${izvor.id} mt-0.5 flex-shrink-0" data-uid="${uid}" checked onchange="osvjeziJedanMaster('${izvor.id}'); filtrirajPrikaz();">
-                        <span class="leading-tight">${glava}</span>
-                    </label>
+            // Generisanje tri velika Master Summary bloka (Statut, Etički kodeks, Pravilnici)
+            for (const [katKljuc, katPostavke] of Object.entries(STRUKTURA_KATEGORIJA)) {
+                const izvoriUKat = ucitaniIzvori.filter(i => i.kategorija === katKljuc);
+                if (izvoriUKat.length === 0) continue;
+
+                html += `
+            <div class="border-2 ${katPostavke.klasaBordera} rounded-lg p-2 bg-white shadow-sm">
+                <details open class="group">
+                    <summary class="flex items-center justify-between p-1.5 bg-slate-100 rounded-md cursor-pointer select-none border border-gray-300 font-bold text-gray-900 text-xs">
+                        <div class="flex items-center" onclick="event.stopPropagation();">
+                            <input type="checkbox" id="cat-${katKljuc}" onchange="toggleKategorija('${katKljuc}', this)" checked class="w-3.5 h-3.5 rounded text-blue-600">
+                            <label for="cat-${katKljuc}" class="ml-2 cursor-pointer uppercase tracking-wider">${katPostavke.naziv}</label>
+                        </div>
+                        <span class="text-[10px] text-gray-500 transition-transform duration-200 group-open:rotate-180 mr-1">▼</span>
+                    </summary>
+                    <div class="mt-2 space-y-2 pl-1">
             `;
-        });
 
-        html += `
-                </div>
-            </details>
-        </div>
-        `;
-    });
+                // Generisanje pojedinačnih dokumenata unutar krovne kategorije
+                izvoriUKat.forEach((izvor) => {
+                    const clanoviIzvora = sviZakonPodaci.filter(c => c.id_zakona === izvor.id);
+                    if (clanoviIzvora.length === 0) return;
 
-    container.innerHTML = html;
-}
+                    const jedinstveneGlave = [...new Set(clanoviIzvora.map(c => c.glava))];
 
-function toggleApsolutnoSve(krovniMaster) {
-    const stanje = krovniMaster.checked;
-    ucitaniIzvori.forEach(izvor => {
-        const master = document.getElementById(`master-${izvor.id}`);
-        if(master) {
-            master.checked = stanje;
-            master.indeterminate = false;
-        }
-    });
-    document.querySelectorAll('.slave-chk').forEach(cb => cb.checked = stanje);
-    filtrirajPrikaz();
-}
+                    html += `
+                    <div class="border border-gray-400 rounded bg-white p-1">
+                        <details class="group">
+                            <summary class="flex items-center justify-between p-1 bg-gray-50 rounded cursor-pointer select-none border border-gray-200 text-gray-700 text-[11px] font-medium">
+                                <div class="flex items-center min-w-0 flex-grow" onclick="event.stopPropagation();">
+                                    <input type="checkbox" id="master-${izvor.id}" data-cat="${katKljuc}" value="${izvor.naziv}" onchange="toggleMaster('${izvor.id}', this)" checked class="master-chk chk-cat-${katKljuc} w-3 h-3 rounded text-blue-600 flex-shrink-0">
+                                    <label for="master-${izvor.id}" class="ml-1.5 cursor-pointer truncate pr-1" title="${izvor.naziv}">${izvor.naziv}</label>
+                                </div>
+                                <span class="text-[9px] text-gray-400 transition-transform duration-200 group-open:rotate-180 flex-shrink-0 mr-0.5">▼</span>
+                            </summary>
+                            <div class="p-1 mt-1 ml-2 space-y-1 max-h-[160px] overflow-y-auto text-[10px] text-gray-600 border-l border-gray-300 pl-2 pr-0.5">
+                `;
 
-function toggleMaster(zakonId, masterChk) {
-    const stanje = masterChk.checked;
-    document.querySelectorAll(`.slave-${zakonId}`).forEach(cb => cb.checked = stanje);
-    masterChk.indeterminate = false;
-    provjeriGlobalniMaster();
-    filtrirajPrikaz();
-}
+                    // Generisanje glava (sekcija) unutar tog dokumenta
+                    jedinstveneGlave.forEach((glava) => {
+                        const uid = `${izvor.naziv}||${glava}`;
+                        html += `
+                                <label class="flex items-start gap-1 cursor-pointer hover:text-gray-950">
+                                    <input type="checkbox" class="slave-chk slave-${izvor.id} chk-slave-cat-${katKljuc} mt-0.5 flex-shrink-0 w-2.5 h-2.5" data-uid="${uid}" checked onchange="osvjeziJedanMaster('${izvor.id}'); filtrirajPrikaz();">
+                                    <span class="leading-tight truncate" title="${glava}">${glava}</span>
+                                </label>
+                    `;
+                    });
 
-function osvjeziJedanMaster(zakonId) {
-    const sviRobovi = document.querySelectorAll(`.slave-${zakonId}`);
-    const oznaceniRobovi = document.querySelectorAll(`.slave-${zakonId}:checked`);
-    const master = document.getElementById(`master-${zakonId}`);
-    
-    if (master && sviRobovi.length > 0) {
-        master.checked = (sviRobovi.length === oznaceniRobovi.length);
-        master.indeterminate = (oznaceniRobovi.length > 0 && oznaceniRobovi.length < sviRobovi.length);
-    }
-    provjeriGlobalniMaster();
-}
-
-function provjeriGlobalniMaster() {
-    const sviRobovi = document.querySelectorAll('.slave-chk');
-    const oznaceniRobovi = document.querySelectorAll('.slave-chk:checked');
-    const globalniMaster = document.getElementById('chk-all');
-    
-    if (globalniMaster && sviRobovi.length > 0) {
-        globalniMaster.checked = (sviRobovi.length === oznaceniRobovi.length);
-        globalniMaster.indeterminate = (oznaceniRobovi.length > 0 && oznaceniRobovi.length < sviRobovi.length);
-    }
-}
-
-function filtrirajPrikaz() {
-    const aktivneGlaveUid = Array.from(document.querySelectorAll('.slave-chk:checked')).map(cb => cb.dataset.uid);
-
-    let filtriraniPodaci = sviZakonPodaci.filter(clan => {
-        const uidClana = `${clan.naziv_zakona}||${clan.glava}`;
-        return aktivneGlaveUid.includes(uidClana);
-    });
-
-    const poljeZaPretragu = document.getElementById('classic-search');
-    const upit = poljeZaPretragu ? poljeZaPretragu.value.toLowerCase().trim() : '';
-
-    if (upit) {
-        document.getElementById('results-title').innerText = "Rezultati pretrage";
-        filtriraniPodaci = filtriraniPodaci.filter(clan => {
-            return String(clan.broj_clana).toLowerCase().includes(upit) || 
-                   clan.naziv_clana.toLowerCase().includes(upit) || 
-                   clan.cisti_tekst.toLowerCase().includes(upit);
-        });
-    } else {
-        document.getElementById('results-title').innerText = "Svi aktivni članovi";
-    }
-
-    trenutniPrikazaniClanovi = filtriraniPodaci;
-    prikaziClanove(trenutniPrikazaniClanovi, globalniIstaknutiKljucevi);
-    osvjeziBrojacSlovaAI();
-    osvjeziBrojacRijeciAI();
-}
-
-let debounceTimer;
-function klasicnaPretraga() {
-    clearTimeout(debounceTimer);
-    debounceTimer = setTimeout(() => { filtrirajPrikaz(); }, 300);
-}
-
-function prikaziClanove(clanovi, istaknutiKljucevi = []) {
-    trenutniPrikazaniClanovi = clanovi;
-    globalniIstaknutiKljucevi = Array.isArray(istaknutiKljucevi) ? istaknutiKljucevi : [];
-    const container = document.getElementById('laws-container');
-    if (!container) return;
-    document.getElementById('results-count').innerText = clanovi ? clanovi.length : 0;
-    container.innerHTML = '';
-
-    if (!clanovi || clanovi.length === 0) {
-        container.innerHTML = `
-            <div class="text-center py-6 text-gray-400 bg-white rounded-lg border border-gray-200 col-span-full">
-                <i class="fa-solid fa-folder-open text-xl mb-1"></i>
-                <p class="text-xs">Nema rezultata za odabrane parametre.</p>
-            </div>`;
-        return;
-    }
-
-    clanovi.forEach(clan => {
-        const jedinstveniKljuc = `${clan.naziv_zakona}__${clan.broj_clana}`;
-        const jeAIPreporuka = globalniIstaknutiKljucevi.length > 0 && globalniIstaknutiKljucevi.includes(jedinstveniKljuc);
-
-        const card = document.createElement('div');
-        if (jeAIPreporuka) {
-            card.className = `p-2.5 rounded-lg border bg-purple-50/40 border-purple-400 ring-1 ring-purple-100 flex flex-col justify-between h-full relative group cursor-pointer transition`;
-        } else {
-            card.className = `p-2.5 rounded-lg border bg-white border-gray-200 hover:border-gray-400 flex flex-col justify-between h-full relative group cursor-pointer transition`;
-        }
-
-        card.setAttribute('onclick', `otvoriModal('${clan.id_sistema}')`);
-        const formatiranTekst = clan.sadrzaj_html || clan.cisti_tekst || "";
-
-        card.innerHTML = `
-            <div class="flex-grow">
-                <div class="flex justify-between items-start gap-4">
-                    <div class="min-w-0">
-                        <span class="text-[9px] font-bold uppercase text-blue-600 px-1 py-0.2 bg-blue-50 rounded">Član ${clan.broj_clana}</span>
-                        <h3 class="text-xs font-bold text-gray-900 mt-0.5 truncate" title="${clan.naziv_clana}">${clan.naziv_clana}</h3>
+                    html += `
+                            </div>
+                        </details>
                     </div>
-                    <div class="flex items-center gap-1 shrink-0" onclick="event.stopPropagation();">
-                        <button onclick="dodajUPrint('${clan.id_sistema}')" title="Dodaj u ispis" class="text-gray-400 hover:text-green-600 p-1 text-[13px] transition">
-                            <i class="fa-solid fa-print"></i>
-                        </button>
-                        ${jeAIPreporuka ? '<span class="text-[8px] bg-purple-600 text-white px-1 rounded font-bold">AI</span>' : ''}
+                `;
+                });
+
+                html += `
                     </div>
-                </div>
-                <div class="skrati-tekst text-gray-600 mt-1 text-[11px] leading-normal">
-                    ${formatiranTekst}
-                </div>
+                </details>
             </div>
-            <div class="mt-2 pt-1 border-t border-gray-100 text-[10px] text-gray-400 font-medium truncate">
-                <i class="fa-solid fa-scale-balanced text-gray-300 mr-1"></i>${clan.naziv_zakona}
-            </div>
-        `;
-        container.appendChild(card);
-    });
-}
-
-function otvoriModal(idSistema) {
-    const clan = sviZakonPodaci.find(c => c.id_sistema === idSistema);
-    if (!clan) return;
-
-    document.getElementById('modal-badge').innerText = `Stavka ${clan.broj_clana || ''}`;
-    document.getElementById('modal-title').innerText = clan.naziv_clana || `Član ${clan.broj_clana}`;
-    document.getElementById('modal-footer-law').innerText = clan.naziv_zakona || '';
-
-    const bodyContainer = document.getElementById('modal-body-content');
-    let htmlSadrzaj = '';
-
-    let siroviTekst = clan.cisti_tekst || clan.sadrzaj_html || "";
-    siroviTekst = siroviTekst.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
-
-    const regexPrelom = /(?<=\.|\?|!|^)\s*(?=\((?:\d+)\))|(?=\s[a-zžšđčć][\)|.])|(?<=\.|\?|!|^)\s*(?=\d+[\)|.])/i;
-    let stavke = siroviTekst.split(regexPrelom).map(d => d.trim()).filter(d => d.length > 0);
-
-    if (stavke.length > 0) {
-        stavke.forEach(stavka => {
-            const tekstStavke = stavka.trim();
-            if (!tekstStavke) return;
-            const jeSlovnaPodtacka = /^[a-zžšđčć][\)|.]/i.test(tekstStavke);
-            const jeBrojIliStav = /^(\(?\d+\)?[\)|.])/.test(tekstStavke);
-
-            if (jeSlovnaPodtacka) {
-                const matchOznaka = tekstStavke.match(/^([a-zžšđčć][\)|.])(.*)/i);
-                if (matchOznaka) {
-                    htmlSadrzaj += `<div class="pl-6 mb-2 flex items-start gap-2.5"><span class="font-bold text-blue-600 shrink-0 min-w-[20px]">${matchOznaka[1]}</span><span class="text-gray-700 text-[12px]">${matchOznaka[2].trim()}</span></div>`;
-                } else {
-                    htmlSadrzaj += `<p class="pl-6 mb-2 text-gray-700 text-[12px]">${tekstStavke}</p>`;
-                }
-            } else if (jeBrojIliStav) {
-                const matchOznaka = tekstStavke.match(/^(\(?\d+\)?[\)|.])(.*)/);
-                if (matchOznaka) {
-                    htmlSadrzaj += `<div class="mb-3 flex items-start gap-2"><span class="text-sky-600 font-bold shrink-0 min-w-[22px]">${matchOznaka[1]}</span><span class="text-gray-700 text-[12px]">${matchOznaka[2].trim()}</span></div>`;
-                } else {
-                    htmlSadrzaj += `<p class="text-gray-600 text-[11px] mb-3">${tekstStavke}</p>`;
-                }
-            } else {
-                htmlSadrzaj += `<p class="text-gray-700 text-[11px] mb-3">${tekstStavke}</p>`;
+            `;
             }
-        });
-    } else {
-        htmlSadrzaj += `<p class="text-gray-800 text-[12px]">${siroviTekst}</p>`;
-    }
 
-    bodyContainer.innerHTML = htmlSadrzaj;
-    const printBtn = document.getElementById('modal-print-btn');
-    if (listaZaPrint.some(c => c.id_sistema === idSistema)) {
-        printBtn.className = "bg-red-600 text-white px-3 py-1 rounded font-medium flex items-center gap-1 text-xs";
-        printBtn.innerHTML = `<i class="fa-solid fa-trash"></i> Ukloni iz izvještaja`;
-        printBtn.setAttribute('onclick', `ukloniIzPrinta('${clan.id_sistema}'); otvoriModal('${clan.id_sistema}');`);
-    } else {
-        printBtn.className = "bg-green-600 text-white px-3 py-1 rounded font-medium flex items-center gap-1 text-xs";
-        printBtn.innerHTML = `<i class="fa-solid fa-print"></i> Dodaj u izvještaj`;
-        printBtn.setAttribute('onclick', `dodajUPrint('${clan.id_sistema}'); otvoriModal('${clan.id_sistema}'); event.stopPropagation();`);
-    }
-
-    document.getElementById('member-modal').classList.remove('hidden');
-}
-
-function zatvoriModal() { document.getElementById('member-modal').classList.add('hidden'); }
-
-// =========================================================================
-// POTPUNO DINAMIČKA AI LOGIKA (Proceduralni Kontekst i Mapiranje)
-// =========================================================================
-async function traziAI() {
-    const izabraniModel = document.getElementById('ai-model-select').value;
-    const problemText = document.getElementById('ai-problem').value.trim();
-
-    if (!problemText) { alert("Molimo unesite opis problema."); return; }
-    if (!trenutniPrikazaniClanovi || trenutniPrikazaniClanovi.length === 0) {
-        alert("Molimo označite aktivne sekcije registra.");
-        return;
-    }
-
-    document.getElementById('btn-ai-search').disabled = true;
-    document.getElementById('loader').classList.remove('hidden');
-    document.getElementById('ai-response-box-desktop').classList.add('hidden');
-    document.getElementById('ai-response-box-mobile').classList.add('hidden');
-    document.getElementById('laws-container').innerHTML = '';
-
-    const aktivniZakoniPodaci = trenutniPrikazaniClanovi;
-
-    async function posaljiApiZahtjev(trenutniModel) {
-        const finalniKontekstZakona = generisiKontekstZakona(aktivniZakoniPodaci, trenutniModel);
-        
-        const sistemskiPrompt = `
-        Ti si napredni i visoko specijalizovani AI asistent obučen za analizu normativnih akata, pravila i zakona.
-        Zaboravi svu prethodnu memoriju razgovora i fokusiraj se isključivo na dostavljeni kontekst.
-        
-        [STRIKTNA VREMENSKA I KOLIČINSKA NORMA]:
-        Generiši sažet, stručan i precizan odgovor (maksimalno 400 riječi).
-
-        [LEGENDA STRUKTURE DOSTAVLJENOG REGISTRA]:
-        Podaci iz aktivne baze su poslani u strogoj strukturi: NAZIV_AKTA|BROJ_ČLANA_ILI_STAVKE|"NASLOV_STAVKE"|UKUPNO_ISTIH_NASLOVA
-
-        [AKTIVNI KONTEKST REGISTRA KOJI TI JE SELEKTOVAN ZA ANALIZU]:
-        ${finalniKontekstZakona}
-        
-        ZADATAK:
-        1. Analiziraj korisnički unos/problem i mapiraj ga isključivo na stavke koje se nalaze u učitanom kontekstu iznad.
-        2. Donesi analitičko obrazloženje i navedi tačne članove/stavke i puni naziv akta koji rješava ili opisuje situaciju.
-        
-        STROGO PRAVILO ZA FORMAT:
-        Vrati ODGOVOR ISKLJUČIVO KAO VALIDAN JSON OBJEKAT sa sljedećom strukturom:
-        {
-            "objasnjenje": "Stručno obrazloženje problema sa referencama...",
-            "predlozeni_clanovi": [
-                {"zakon": "Točan Puni Naziv Akta Iz Registra", "clan": "Broj člana ili stavke"}
-            ]
+            container.innerHTML = html;
         }
-        `;
-        
-        const response = await fetch(AI_API_URL, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                model: trenutniModel,
-                messages: [
-                    { "role": "system", "content": sistemskiPrompt },
-                    { "role": "user", "content": `Korisnički problem/kontekst: "${problemText}"` }
-                ],
-                response_format: { type: "json_object" },
-                temperature: 0.1
-            })
-        });
 
-        if (response.status === 503) throw new Error("503_FALLBACK");
-        if (!response.ok) throw new Error(response.status);
+        function toggleApsolutnoSve(krovniMaster) {
+            const stanje = krovniMaster.checked;
+            document.querySelectorAll('.master-chk, [id^="cat-"]').forEach(cb => {
+                cb.checked = stanje;
+                cb.indeterminate = false;
+            });
+            document.querySelectorAll('.slave-chk').forEach(cb => cb.checked = stanje);
+            filtrirajPrikaz();
+        }
 
-        return await response.json();
-    }
+        function toggleKategorija(katKljuc, catChk) {
+            const stanje = catChk.checked;
+            document.querySelectorAll(`.chk-cat-${katKljuc}`).forEach(cb => {
+                cb.checked = stanje;
+                cb.indeterminate = false;
+            });
+            document.querySelectorAll(`.chk-slave-cat-${katKljuc}`).forEach(cb => cb.checked = stanje);
+            catChk.indeterminate = false;
+            provjeriGlobalniMaster();
+            filtrirajPrikaz();
+        }
 
-    try {
-        let data;
-        let finalnoKoristenModel = izabraniModel;
+        function toggleMaster(zakonId, masterChk) {
+            const stanje = masterChk.checked;
+            document.querySelectorAll(`.slave-${zakonId}`).forEach(cb => cb.checked = stanje);
+            masterChk.indeterminate = false;
 
-        try {
-            data = await posaljiApiZahtjev(izabraniModel);
-        } catch (err) {
-            if (err.message === "503_FALLBACK") {
-                finalnoKoristenModel = izabraniModel === "gemini-3.5-flash" ? "qwen/qwen3-32b" : "gemini-3.5-flash";
-                console.warn(`Preopterećenje. Aktivacija fallback modela: ${finalnoKoristenModel}`);
-                data = await posaljiApiZahtjev(finalnoKoristenModel);
-            } else {
-                throw err;
+            const katKljuc = masterChk.dataset.cat;
+            osvjeziKategorijaMaster(katKljuc);
+            provjeriGlobalniMaster();
+            filtrirajPrikaz();
+        }
+
+        function osvjeziJedanMaster(zakonId) {
+            const sviRobovi = document.querySelectorAll(`.slave-${zakonId}`);
+            const oznaceniRobovi = document.querySelectorAll(`.slave-${zakonId}:checked`);
+            const master = document.getElementById(`master-${zakonId}`);
+
+            if (master && sviRobovi.length > 0) {
+                master.checked = (sviRobovi.length === oznaceniRobovi.length);
+                master.indeterminate = (oznaceniRobovi.length > 0 && oznaceniRobovi.length < sviRobovi.length);
+
+                const katKljuc = master.dataset.cat;
+                osvjeziKategorijaMaster(katKljuc);
+            }
+            provjeriGlobalniMaster();
+        }
+
+        function osvjeziKategorijaMaster(katKljuc) {
+            const krovniCat = document.getElementById(`cat-${katKljuc}`);
+            const sviRoboviKat = document.querySelectorAll(`.chk-slave-cat-${katKljuc}`);
+            const oznaceniRoboviKat = document.querySelectorAll(`.chk-slave-cat-${katKljuc}:checked`);
+
+            if (krovniCat && sviRoboviKat.length > 0) {
+                krovniCat.checked = (sviRoboviKat.length === oznaceniRoboviKat.length);
+                krovniCat.indeterminate = (oznaceniRoboviKat.length > 0 && oznaceniRoboviKat.length < sviRoboviKat.length);
             }
         }
-        
-        let cistiContent = "";
-        if (data.choices && data.choices[0].message && data.choices[0].message.content) {
-            cistiContent = data.choices[0].message.content.trim();
-        } else if (data.output) {
-            cistiContent = data.output.trim();
-        } else {
-            throw new Error("Format odgovora nije validan.");
+
+        function provjeriGlobalniMaster() {
+            const sviRobovi = document.querySelectorAll('.slave-chk');
+            const oznaceniRobovi = document.querySelectorAll('.slave-chk:checked');
+            const globalniMaster = document.getElementById('chk-all');
+
+            if (globalniMaster && sviRobovi.length > 0) {
+                globalniMaster.checked = (sviRobovi.length === oznaceniRobovi.length);
+                globalniMaster.indeterminate = (oznaceniRobovi.length > 0 && oznaceniRobovi.length < sviRobovi.length);
+            }
         }
 
-        const aiContent = JSON.parse(cistiContent);
-        const konacniTekstOdgovora = aiContent.objasnjenje + `\n\n----------------------------------------\n🤖 Evaluaciju izvršio model: ${finalnoKoristenModel}`;
-    
-        document.getElementById('ai-response-text-desktop').innerText = konacniTekstOdgovora;
-        document.getElementById('ai-response-text-mobile').innerText = konacniTekstOdgovora;
-        
-        if (window.innerWidth < 1024) {
-            document.getElementById('ai-response-box-mobile').classList.remove('hidden');
-        } else {
-            document.getElementById('ai-response-box-desktop').classList.remove('hidden');
+        function filtrirajPrikaz() {
+            const aktivneGlaveUid = Array.from(document.querySelectorAll('.slave-chk:checked')).map(cb => cb.dataset.uid);
+
+            let filtriraniPodaci = sviZakonPodaci.filter(clan => {
+                const uidClana = `${clan.naziv_zakona}||${clan.glava}`;
+                return aktivneGlaveUid.includes(uidClana);
+            });
+
+            const poljeZaPretragu = document.getElementById('classic-search');
+            const upit = poljeZaPretragu ? poljeZaPretragu.value.toLowerCase().trim() : '';
+
+            if (upit) {
+                document.getElementById('results-title').innerText = "Rezultati pretrage";
+                filtriraniPodaci = filtriraniPodaci.filter(clan => {
+                    return String(clan.broj_clana).toLowerCase().includes(upit) ||
+                        clan.naziv_clana.toLowerCase().includes(upit) ||
+                        clan.cisti_tekst.toLowerCase().includes(upit);
+                });
+            } else {
+                document.getElementById('results-title').innerText = "Svi aktivni članovi";
+            }
+
+            trenutniPrikazaniClanovi = filtriraniPodaci;
+            prikaziClanove(trenutniPrikazaniClanovi, globalniIstaknutiKljucevi);
+            osvjeziBrojacSlovaAI();
+            osvjeziBrojacRijeciAI();
         }
 
-        const preporuke = aiContent.predlozeni_clanovi || [];
-        
-        // Proceduralno mapiranje povratnih informacija iz AI bez hardkodiranih stringova
-        const preporuceniKljucevi = preporuke.map(p => {
-            let lokalniZakon = (p.zakon || "").trim().toLowerCase();
-            let pronadjeniZakon = ucitaniIzvori.find(i => i.naziv.toLowerCase().includes(lokalniZakon) || lokalniZakon.includes(i.naziv.toLowerCase()));
-            let stvarniNazivZakona = pronadjeniZakon ? pronadjeniZakon.naziv : p.zakon;
-            
-            let cistiBroj = String(p.clan||"").toLowerCase().replace('član', '').replace('stavka', '').replace('.', '').trim();
-            return `${stvarniNazivZakona}__${cistiBroj}`;
-        });
+        let debounceTimer;
+        function klasicnaPretraga() {
+            clearTimeout(debounceTimer);
+            debounceTimer = setTimeout(() => { filtrirajPrikaz(); }, 300);
+        }
 
-        const filtriraniZakon = aktivniZakoniPodaci.filter(clan => {
-            let lokalniCistiBroj = String(clan.broj_clana).toLowerCase().replace('član', '').replace('stavka', '').replace('.', '').trim();
-            return preporuceniKljucevi.includes(`${clan.naziv_zakona}__${lokalniCistiBroj}`);
-        });
+        function prikaziClanove(clanovi, istaknutiKljucevi = []) {
+            trenutniPrikazaniClanovi = clanovi;
+            globalniIstaknutiKljucevi = Array.isArray(istaknutiKljucevi) ? istaknutiKljucevi : [];
+            const container = document.getElementById('laws-container');
+            if (!container) return;
+            document.getElementById('results-count').innerText = clanovi ? clanovi.length : 0;
+            container.innerHTML = '';
 
-        const OstatakZakona = aktivniZakoniPodaci.filter(clan => {
-            let lokalniCistiBroj = String(clan.broj_clana).toLowerCase().replace('član', '').replace('stavka', '').replace('.', '').trim();
-            return !preporuceniKljucevi.includes(`${clan.naziv_zakona}__${lokalniCistiBroj}`);
-        });
-        
-        document.getElementById('results-title').innerText = `AI Preporuke (${filtriraniZakon.length})`;
-        prikaziClanove([...filtriraniZakon, ...OstatakZakona], preporuceniKljucevi);
-        document.getElementById('laws-container').scrollTop = 0;
+            if (!clanovi || clanovi.length === 0) {
+                container.innerHTML = `
+                <div class="text-center py-6 text-gray-400 bg-white rounded-lg border border-gray-200 col-span-full">
+                    <i class="fa-solid fa-folder-open text-xl mb-1"></i>
+                    <p class="text-xs">Nema rezultata za odabrane parametre.</p>
+                </div>`;
+                return;
+            }
 
-    } catch (error) {
-        console.error("AI Error:", error);
-        alert("Došlo je do greške prilikom AI obrade. Pokušajte ponovo.");
-        filtrirajPrikaz();
-    } finally {
-        document.getElementById('btn-ai-search').disabled = false;
-        document.getElementById('loader').classList.add('hidden');
-    }
-}
+            clanovi.forEach(clan => {
+                const jedinstveniKljuc = `${clan.naziv_zakona}__${clan.broj_clana}`;
+                const jeAIPreporuka = globalniIstaknutiKljucevi.length > 0 && globalniIstaknutiKljucevi.includes(jedinstveniKljuc);
 
-function generisiKontekstZakona(aktivniZakoniPodaci, izabraniModel) {
-    const isGroqReasoning = izabraniModel.includes('qwen') || izabraniModel.includes('openai');
+                const card = document.createElement('div');
+                if (jeAIPreporuka) {
+                    card.className = `p-2.5 rounded-lg border bg-purple-50/40 border-purple-400 ring-1 ring-purple-100 flex flex-col justify-between h-full relative group cursor-pointer transition`;
+                } else {
+                    card.className = `p-2.5 rounded-lg border bg-white border-gray-200 hover:border-gray-400 flex flex-col justify-between h-full relative group cursor-pointer transition`;
+                }
 
-    const brojaciNaslova = {};
-    aktivniZakoniPodaci.forEach(clan => {
-        const naslov = (clan.naziv_clana || "Bez naslova").trim();
-        brojaciNaslova[naslov] = (brojaciNaslova[naslov] || 0) + 1;
-    });
+                card.setAttribute('onclick', `otvoriModal('${clan.id_sistema}')`);
+                const formatiranTekst = clan.sadrzaj_html || clan.cisti_tekst || "";
 
-    if (isGroqReasoning) {
-        return aktivniZakoniPodaci.map(clan => {
-            const brojClana = String(clan.broj_clana).toLowerCase().replace('član', '').replace('.', '').trim();
-            const naslov = (clan.naziv_clana || "Bez naslova").trim();
-            return `${clan.naziv_zakona}|${brojClana}|"${naslov}"|${brojaciNaslova[naslov]}`;
-        }).join('\n');
-    } else {
-        return aktivniZakoniPodaci.map(clan => {
-            const tekst = (clan.cisti_tekst || "").trim();
-            const naslov = (clan.naziv_clana || "Bez naslova").trim();
-            return `${clan.naziv_zakona} - Stavka/Član ${clan.broj_clana} ("${naslov}"):\n${tekst.substring(0, 300)}...`;
-        }).join('\n---\n');
-    }
-}
+                card.innerHTML = `
+                <div class="flex-grow">
+                    <div class="flex justify-between items-start gap-4">
+                        <div class="min-w-0">
+                            <span class="text-[9px] font-bold uppercase text-blue-600 px-1 py-0.2 bg-blue-50 rounded font-mono">Član ${clan.broj_clana}</span>
+                            <h3 class="text-xs font-bold text-gray-900 mt-0.5 truncate" title="${clan.naziv_clana}">${clan.naziv_clana}</h3>
+                        </div>
+                        <div class="flex items-center gap-1 shrink-0" onclick="event.stopPropagation();">
+                            <button onclick="dodajUPrint('${clan.id_sistema}')" title="Dodaj u ispis" class="text-gray-400 hover:text-green-600 p-1 text-[13px] transition">
+                                <i class="fa-solid fa-print"></i>
+                            </button>
+                            ${jeAIPreporuka ? '<span class="text-[8px] bg-purple-600 text-white px-1 rounded font-bold">AI</span>' : ''}
+                        </div>
+                    </div>
+                    <div class="skrati-tekst text-gray-600 mt-1 text-[11px] leading-normal">
+                        ${formatiranTekst}
+                    </div>
+                </div>
+                <div class="mt-2 pt-1 border-t border-gray-100 text-[10px] text-gray-400 font-medium truncate">
+                    <i class="fa-solid fa-scale-balanced text-gray-300 mr-1"></i>${clan.naziv_zakona}
+                </div>
+            `;
+                container.appendChild(card);
+            });
+        }
 
-// =========================================================================
-// POMOĆNE FUNKCIJE (Layout, Ispis, Brojači)
-// =========================================================================
-function osvjeziBrojacSlovaAI() {
-    let ukupanBrojSlova = 0;
-    trenutniPrikazaniClanovi.forEach(clan => { ukupanBrojSlova += (clan.cisti_tekst || "").length; });
-    const el = document.getElementById('ai-character-count');
-    if (el) el.innerText = ukupanBrojSlova.toLocaleString('bs');
-}
+        function otvoriModal(idSistema) {
+            const clan = sviZakonPodaci.find(c => c.id_sistema === idSistema);
+            if (!clan) return;
 
-function osvjeziBrojacRijeciAI() {
-    let ukupanBrojRijeci = 0;
-    trenutniPrikazaniClanovi.forEach(clan => {
-        const txt = (clan.cisti_tekst || "").trim();
-        if (txt.length > 0) ukupanBrojRijeci += txt.split(/\s+/).length;
-    });
-    const el = document.getElementById('ai-word-count');
-    if (el) el.innerText = ukupanBrojRijeci.toLocaleString('bs');
-}
+            document.getElementById('modal-badge').innerText = `Stavka ${clan.broj_clana || ''}`;
+            document.getElementById('modal-title').innerText = clan.naziv_clana || `Član ${clan.broj_clana}`;
+            document.getElementById('modal-footer-law').innerText = clan.naziv_zakona || '';
 
-function promijeniLayout(tip) {
-    trenutniLayout = tip;
-    const btnList = document.getElementById('btn-layout-list');
-    const btnGrid = document.getElementById('btn-layout-grid');
-    const koloneWrapper = document.getElementById('kolone-select-wrapper');
-    if (tip === 'grid') {
-        btnGrid.className = "px-2 py-0.5 rounded text-xs font-medium bg-blue-600 text-white";
-        btnList.className = "px-2 py-0.5 rounded text-xs font-medium text-gray-600 hover:text-gray-900";
-        koloneWrapper.classList.remove('hidden');
-    } else {
-        btnList.className = "px-2 py-0.5 rounded text-xs font-medium bg-blue-600 text-white";
-        btnGrid.className = "px-2 py-0.5 rounded text-xs font-medium text-gray-600 hover:text-gray-900";
-        koloneWrapper.classList.add('hidden');
-    }
-    postaviLayoutKlase();
-    prikaziClanove(trenutniPrikazaniClanovi, globalniIstaknutiKljucevi);
-}
+            const bodyContainer = document.getElementById('modal-body-content');
+            let htmlSadrzaj = '';
 
-function postaviLayoutKlase() {
-    const container = document.getElementById('laws-container');
-    if (!container) return;
-    container.className = "overflow-y-auto max-h-[75vh] pr-1 pb-20";
-    if (trenutniLayout === 'grid') {
-        const cols = document.getElementById('grid-columns').value;
-        container.classList.add('grid', ...cols.split(' '), 'gap-2', 'items-stretch');
-    } else {
-        container.classList.add('flex', 'flex-col', 'space-y-1.5');
-    }
-}
+            let siroviTekst = clan.cisti_tekst || clan.sadrzaj_html || "";
+            siroviTekst = siroviTekst.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
 
-function promijeniKolone() { postaviLayoutKlase(); prikaziClanove(trenutniPrikazaniClanovi, globalniIstaknutiKljucevi); }
-function dodajUPrint(idSistema) { const c = sviZakonPodaci.find(x => x.id_sistema === idSistema); if (c && !listaZaPrint.some(x => x.id_sistema === idSistema)) { listaZaPrint.push(c); osvjeziPrintPanel(); } }
-function ukloniIzPrinta(idSistema) { listaZaPrint = listaZaPrint.filter(c => c.id_sistema !== idSistema); osvjeziPrintPanel(); }
+            const regexPrelom = /(?<=\.|\?|!|^)\s*(?=\((?:\d+)\))|(?=\s[a-zžšđčć][\)|.])|(?<=\.|\?|!|^)\s*(?=\d+[\)|.])/i;
+            let stavke = siroviTekst.split(regexPrelom).map(d => d.trim()).filter(d => d.length > 0);
 
-function osvjeziPrintPanel() {
-    const badge = document.getElementById('print-count');
-    const preview = document.getElementById('print-preview-list');
-    const btn = document.getElementById('btn-print');
-    if (badge) badge.innerText = listaZaPrint.length;
-    if (!preview) return;
-    preview.innerHTML = '';
+            if (stavke.length > 0) {
+                stavke.forEach(stavka => {
+                    const tekstStavke = stavka.trim();
+                    if (!tekstStavke) return;
+                    const jeSlovnaPodtacka = /^[a-zžšđčć][\)|.]/i.test(tekstStavke);
+                    const jeBrojIliStav = /^(\(?\d+\)?[\)|.])/.test(tekstStavke);
 
-    if (listaZaPrint.length === 0) {
-        preview.innerHTML = `<p class="italic text-gray-400">Nema odabranih stavki.</p>`;
-        if (btn) { btn.disabled = true; btn.className = "w-full bg-gray-400 text-white font-medium py-1.5 px-3 rounded text-xs cursor-not-allowed flex items-center justify-center gap-1.5 shadow-sm"; }
-        return;
-    }
-    if (btn) { btn.disabled = false; btn.className = "w-full bg-green-600 hover:bg-green-700 text-white font-medium py-1.5 px-3 rounded text-xs cursor-pointer flex items-center justify-center gap-1.5 shadow-sm"; }
-    
-    listaZaPrint.forEach(clan => {
-        const item = document.createElement('div');
-        item.className = "flex justify-between items-center bg-gray-100 p-1 rounded border border-gray-200";
-        const isMeta = clan.id_sistema.startsWith("korisnik") || clan.id_sistema.startsWith("ai");
-        const ime = isMeta ? `${clan.broj_clana}` : `${clan.broj_clana} - ${clan.naziv_zakona}`;
-        item.innerHTML = `<span class="truncate font-medium max-w-[80%]">${ime}</span><button onclick="ukloniIzPrinta('${clan.id_sistema}')" class="text-red-500 hover:text-red-700 px-1"><i class="fa-solid fa-trash-can"></i></button>`;
-        preview.appendChild(item);
-    });
-}
+                    if (jeSlovnaPodtacka) {
+                        const matchOznaka = tekstStavke.match(/^([a-zžšđčć][\)|.])(.*)/i);
+                        if (matchOznaka) {
+                            htmlSadrzaj += `<div class="pl-6 mb-2 flex items-start gap-2.5"><span class="font-bold text-blue-600 shrink-0 min-w-[20px]">${matchOznaka[1]}</span><span class="text-gray-700 text-[12px]">${matchOznaka[2].trim()}</span></div>`;
+                        } else {
+                            htmlSadrzaj += `<p class="pl-6 mb-2 text-gray-700 text-[12px]">${tekstStavke}</p>`;
+                        }
+                    } else if (jeBrojIliStav) {
+                        const matchOznaka = tekstStavke.match(/^(\(?\d+\)?[\)|.])(.*)/);
+                        if (matchOznaka) {
+                            htmlSadrzaj += `<div class="mb-3 flex items-start gap-2"><span class="text-sky-600 font-bold shrink-0 min-w-[22px]">${matchOznaka[1]}</span><span class="text-gray-700 text-[12px]">${matchOznaka[2].trim()}</span></div>`;
+                        } else {
+                            htmlSadrzaj += `<p class="text-gray-600 text-[11px] mb-3">${tekstStavke}</p>`;
+                        }
+                    } else {
+                        htmlSadrzaj += `<p class="text-gray-700 text-[11px] mb-3">${tekstStavke}</p>`;
+                    }
+                });
+            } else {
+                htmlSadrzaj += `<p class="text-gray-800 text-[12px]">${siroviTekst}</p>`;
+            }
 
-function stampajOdabrano() {
-    if (listaZaPrint.length === 0) return;
-    const prProzor = window.open('', '_blank');
-    let html = `<html><head><title>Izvještaj</title><style>body { font-family: Arial, sans-serif; padding: 30px; font-size: 13px; line-height: 1.5; color: #333; } .print-header { border-bottom: 2px solid #1e3a8a; padding-bottom: 10px; margin-bottom: 25px; } .clan-blok { page-break-inside: avoid; border: 1px solid #ddd; padding: 15px; margin-bottom: 15px; border-radius: 4px; } .clan-broj { font-weight: bold; color: #1e3a8a; background: #f0f4f8; padding: 2px 6px; border-radius: 3px; display: inline-block; }</style></head><body><div class="print-header"><h1>Generisani Izvještaj Dokumentacije</h1><p>Datum: ${new Date().toLocaleDateString('bs')}</p></div>`;
-    listaZaPrint.forEach(c => { html += `<div class="print-blok"><span class="clan-broj">${c.broj_clana}</span><div style="font-weight:bold; margin: 5px 0;">${c.naziv_clana}</div><div style="margin-top:10px;">${c.sadrzaj_html}</div><div style="font-size:11px; color:#777; font-style:italic; margin-top:10px; border-top:1px solid #eee; padding-top:5px;">Registni izvor: ${c.naziv_zakona}</div></div><br>`; });
-    html += `</body></html>`;
-    prProzor.document.write(html); prProzor.document.close(); prProzor.focus();
-    setTimeout(() => { prProzor.print(); }, 500);
-}
+            bodyContainer.innerHTML = htmlSadrzaj;
+            const printBtn = document.getElementById('modal-print-btn');
+            if (listaZaPrint.some(c => c.id_sistema === idSistema)) {
+                printBtn.className = "bg-red-600 text-white px-3 py-1 rounded font-medium flex items-center gap-1 text-xs";
+                printBtn.innerHTML = `<i class="fa-solid fa-trash"></i> Ukloni iz izvještaja`;
+                printBtn.setAttribute('onclick', `ukloniIzPrinta('${clan.id_sistema}'); otvoriModal('${clan.id_sistema}');`);
+            } else {
+                printBtn.className = "bg-green-600 text-white px-3 py-1 rounded font-medium flex items-center gap-1 text-xs";
+                printBtn.innerHTML = `<i class="fa-solid fa-print"></i> Dodaj u izvještaj`;
+                printBtn.setAttribute('onclick', `dodajUPrint('${clan.id_sistema}'); otvoriModal('${clan.id_sistema}'); event.stopPropagation();`);
+            }
 
-function stampajPrompt() {
-    const txt = document.getElementById('ai-problem').value.trim();
-    if (!txt) return;
-    const id = "korisnik_prompt";
-    if (listaZaPrint.some(x => x.id_sistema === id)) return;
-    listaZaPrint.push({ id_sistema: id, broj_clana: "📝 Uneseni problem", naziv_clana: "Tekst problema poslat na evaluaciju", sadrzaj_html: `<div style="white-space: pre-wrap; background: #faf5ff; padding: 15px; border: 1px solid #e9d5ff; border-radius: 4px;">${txt}</div>`, naziv_zakona: "Korisnički unos" });
-    osvjeziPrintPanel();
-}
+            document.getElementById('member-modal').classList.remove('hidden');
+        }
 
-function stampajAiAnalizu() {
-    const txt = document.getElementById('ai-response-text-desktop').innerText || document.getElementById('ai-response-text-mobile').innerText;
-    if (!txt) return;
-    const id = "ai_analiza_blok";
-    if (listaZaPrint.some(x => x.id_sistema === id)) return;
-    listaZaPrint.push({ id_sistema: id, broj_clana: "🤖 AI Rezultat", naziv_clana: "Mišljenje i analiza generisana od strane AI", sadrzaj_html: `<div style="white-space: pre-wrap; background: #f0fdf4; padding: 15px; border: 1px solid #bbf7d0; border-radius: 4px; color: #166534;">${txt}</div>`, naziv_zakona: "AI Asistent" });
-    osvjeziPrintPanel();
-}
+        function zatvoriModal() { document.getElementById('member-modal').classList.add('hidden'); }
 
-function zatvoriAiBox() {
-    document.getElementById('ai-response-box-desktop').classList.add('hidden');
-    document.getElementById('ai-response-box-mobile').classList.add('hidden');
-    document.getElementById('results-title').innerText = "Svi aktivni članovi";
-    filtrirajPrikaz();
-}
+        async function traziAI() {
+            const izabraniModel = document.getElementById('ai-model-select').value;
+            const problemText = document.getElementById('ai-problem').value.trim();
 
-window.onclick = function(e) { if (e.target == document.getElementById('member-modal')) zatvoriModal(); }
-window.onload = ucitajSveZakone;
+            if (!problemText) { alert("Molimo unesite opis problema."); return; }
+            if (!trenutniPrikazaniClanovi || trenutniPrikazaniClanovi.length === 0) {
+                alert("Molimo označite aktivne sekcije registra.");
+                return;
+            }
+
+            document.getElementById('btn-ai-search').disabled = true;
+            document.getElementById('loader').classList.remove('hidden');
+            document.getElementById('ai-response-box-desktop').classList.add('hidden');
+            document.getElementById('ai-response-box-mobile').classList.add('hidden');
+            document.getElementById('laws-container').innerHTML = '';
+
+            const aktivniZakoniPodaci = trenutniPrikazaniClanovi;
+
+            async function posaljiApiZahtjev(trenutniModel) {
+                const finalniKontekstZakona = generisiKontekstZakona(aktivniZakoniPodaci, trenutniModel);
+
+                const sistemskiPrompt = `
+            Ti si napredni i visoko specijalizovani AI asistent obučen za analizu normativnih akata, pravila i zakona.
+            Zaboravi svu prethodnu memoriju razgovora i fokusiraj se isključivo na dostavljeni kontekst.
+
+            [STRIKTNA VREMENSKA I KOLIČINSKA NORMA]:
+            Obavezno unutar 9 sekundi generiši sažet, stručan i precizan odgovor (maksimalno 400 riječi).
+
+            [LEGENDA STRUKTURE DOSTAVLJENOG REGISTRA]:
+            Podaci iz aktivne baze su poslani u strogoj strukturi: NAZIV_AKTA|BROJ_ČLANA_ILI_STAVKE|"NASLOV_STAVKE"|UKUPNO_ISTIH_NASLOVA
+
+            [AKTIVNI KONTEKST REGISTRA KOJI TI JE SELEKTOVAN ZA ANALIZU]:
+            ${finalniKontekstZakona}
+
+            ZADATAK:
+            1. Analiziraj korisnički unos/problem i mapiraj ga isključivo na stavke koje se nalaze u učitanom kontekstu iznad.
+            2. Donesi analitičko obrazloženje i navedi tačne članove/stavke i puni naziv akta koji rješava ili opisuje situaciju.
+
+            STROGO PRAVILO ZA FORMAT:
+            Vrati ODGOVOR ISKLJUČIVO KAO VALIDAN JSON OBJEKAT sa sljedećom strukturom:
+            {
+                "objasnjenje": "Stručno obrazloženje problema sa referencama...",
+                "predlozeni_clanovi": [
+                    {"zakon": "Točan Puni Naziv Akta Iz Registra", "clan": "Broj člana ili stavke"}
+                ]
+            }
+            `;
+
+                const response = await fetch(AI_API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        model: trenutniModel,
+                        messages: [
+                            { "role": "system", "content": sistemskiPrompt },
+                            { "role": "user", "content": `Korisnički problem/kontekst: "${problemText}"` }
+                        ],
+                        response_format: { type: "json_object" },
+                        temperature: 0.1
+                    })
+                });
+
+                if (response.status === 503) throw new Error("503_FALLBACK");
+                if (!response.ok) throw new Error(response.status);
+
+                return await response.json();
+            }
+
+            try {
+                let data;
+                let finalnoKoristenModel = izabraniModel;
+
+                try {
+                    data = await posaljiApiZahtjev(izabraniModel);
+                } catch (err) {
+                    if (err.message === "503_FALLBACK") {
+                        finalnoKoristenModel = izabraniModel === "gemini-3.5-flash" ? "qwen/qwen3-32b" : "gemini-3.5-flash";
+                        console.warn(`Preopterećenje. Aktivacija fallback modela: ${finalnoKoristenModel}`);
+                        data = await posaljiApiZahtjev(finalnoKoristenModel);
+                    } else {
+                        throw err;
+                    }
+                }
+
+                let cistiContent = "";
+                if (data.choices && data.choices[0].message && data.choices[0].message.content) {
+                    cistiContent = data.choices[0].message.content.trim();
+                } else if (data.output) {
+                    cistiContent = data.output.trim();
+                } else {
+                    throw new Error("Format odgovora nije validan.");
+                }
+
+                const aiContent = JSON.parse(cistiContent);
+                const konacniTekstOdgovora = aiContent.objasnjenje + `\n\n----------------------------------------\n🤖 Evaluaciju izvršio model: ${finalnoKoristenModel}`;
+
+                document.getElementById('ai-response-text-desktop').innerText = konacniTekstOdgovora;
+                document.getElementById('ai-response-text-mobile').innerText = konacniTekstOdgovora;
+
+                if (window.innerWidth < 1024) {
+                    document.getElementById('ai-response-box-mobile').classList.remove('hidden');
+                } else {
+                    document.getElementById('ai-response-box-desktop').classList.remove('hidden');
+                }
+
+                const preporuke = aiContent.predlozeni_clanovi || [];
+
+                const preporuceniKljucevi = preporuke.map(p => {
+                    let lokalniZakon = (p.zakon || "").trim().toLowerCase();
+                    let pronadjeniZakon = ucitaniIzvori.find(i => i.naziv.toLowerCase().includes(lokalniZakon) || lokalniZakon.includes(i.naziv.toLowerCase()));
+                    let stvarniNazivZakona = pronadjeniZakon ? pronadjeniZakon.naziv : p.zakon;
+
+                    let cistiBroj = String(p.clan || "").toLowerCase().replace('član', '').replace('stavka', '').replace('.', '').trim();
+                    return `${stvarniNazivZakona}__${cistiBroj}`;
+                });
+
+                const filtriraniZakon = aktivniZakoniPodaci.filter(clan => {
+                    let lokalniCistiBroj = String(clan.broj_clana).toLowerCase().replace('član', '').replace('stavka', '').replace('.', '').trim();
+                    return preporuceniKljucevi.includes(`${clan.naziv_zakona}__${lokalniCistiBroj}`);
+                });
+
+                const OstatakZakona = aktivniZakoniPodaci.filter(clan => {
+                    let lokalniCistiBroj = String(clan.broj_clana).toLowerCase().replace('član', '').replace('stavka', '').replace('.', '').trim();
+                    return !preporuceniKljucevi.includes(`${clan.naziv_zakona}__${lokalniCistiBroj}`);
+                });
+
+                document.getElementById('results-title').innerText = `AI Preporuke (${filtriraniZakon.length})`;
+                prikaziClanove([...filtriraniZakon, ...OstatakZakona], preporuceniKljucevi);
+                document.getElementById('laws-container').scrollTop = 0;
+
+            } catch (error) {
+                console.error("AI Error:", error);
+                alert("Došlo je do greške prilikom AI obrade. Pokušajte ponovo.");
+                filtrirajPrikaz();
+            } finally {
+                document.getElementById('btn-ai-search').disabled = false;
+                document.getElementById('loader').classList.add('hidden');
+            }
+        }
+
+        function generisiKontekstZakona(aktivniZakoniPodaci, izabraniModel) {
+            const isGroqReasoning = izabraniModel.includes('qwen') || izabraniModel.includes('openai');
+
+            const brojaciNaslova = {};
+            aktivniZakoniPodaci.forEach(clan => {
+                const naslov = (clan.naziv_clana || "Bez naslova").trim();
+                brojaciNaslova[naslov] = (brojaciNaslova[naslov] || 0) + 1;
+            });
+
+            if (isGroqReasoning) {
+                return aktivniZakoniPodaci.map(clan => {
+                    const brojClana = String(clan.broj_clana).toLowerCase().replace('član', '').replace('.', '').trim();
+                    const naslov = (clan.naziv_clana || "Bez naslova").trim();
+                    return `${clan.naziv_zakona}|${brojClana}|"${naslov}"|${brojaciNaslova[naslov]}`;
+                }).join('\n');
+            } else {
+                return aktivniZakoniPodaci.map(clan => {
+                    const tekst = (clan.cisti_tekst || "").trim();
+                    const naslov = (clan.naziv_clana || "Bez naslova").trim();
+                    return `${clan.naziv_zakona} - Stavka/Član ${clan.broj_clana} ("${naslov}"):\n${tekst.substring(0, 300)}...`;
+                }).join('\n---\n');
+            }
+        }
+
+        function osvjeziBrojacSlovaAI() {
+            let ukupanBrojSlova = 0;
+            trenutniPrikazaniClanovi.forEach(clan => { ukupanBrojSlova += (clan.cisti_tekst || "").length; });
+            const el = document.getElementById('ai-character-count');
+            if (el) el.innerText = ukupanBrojSlova.toLocaleString('bs');
+        }
+
+        function osvjeziBrojacRijeciAI() {
+            let ukupanBrojRijeci = 0;
+            trenutniPrikazaniClanovi.forEach(clan => {
+                const txt = (clan.cisti_tekst || "").trim();
+                if (txt.length > 0) ukupanBrojRijeci += txt.split(/\s+/).length;
+            });
+            const el = document.getElementById('ai-word-count');
+            if (el) el.innerText = ukupanBrojRijeci.toLocaleString('bs');
+        }
+
+        function promijeniLayout(tip) {
+            trenutniLayout = tip;
+            const btnList = document.getElementById('btn-layout-list');
+            const btnGrid = document.getElementById('btn-layout-grid');
+            const koloneWrapper = document.getElementById('kolone-select-wrapper');
+            if (tip === 'grid') {
+                btnGrid.className = "px-2 py-0.5 rounded text-xs font-medium bg-blue-600 text-white";
+                btnList.className = "px-2 py-0.5 rounded text-xs font-medium text-gray-600 hover:text-gray-900";
+                koloneWrapper.classList.remove('hidden');
+            } else {
+                btnList.className = "px-2 py-0.5 rounded text-xs font-medium bg-blue-600 text-white";
+                btnGrid.className = "px-2 py-0.5 rounded text-xs font-medium text-gray-600 hover:text-gray-900";
+                koloneWrapper.classList.add('hidden');
+            }
+            postaviLayoutKlase();
+            prikaziClanove(trenutniPrikazaniClanovi, globalniIstaknutiKljucevi);
+        }
+
+        function postaviLayoutKlase() {
+            const container = document.getElementById('laws-container');
+            if (!container) return;
+            container.className = "overflow-y-auto max-h-[75vh] pr-1 pb-20";
+            if (trenutniLayout === 'grid') {
+                const cols = document.getElementById('grid-columns').value;
+                container.classList.add('grid', ...cols.split(' '), 'gap-2', 'items-stretch');
+            } else {
+                container.classList.add('flex', 'flex-col', 'space-y-1.5');
+            }
+        }
+
+        function promijeniKolone() { postaviLayoutKlase(); prikaziClanove(trenutniPrikazaniClanovi, globalniIstaknutiKljucevi); }
+        function dodajUPrint(idSistema) { const c = sviZakonPodaci.find(x => x.id_sistema === idSistema); if (c && !listaZaPrint.some(x => x.id_sistema === idSistema)) { listaZaPrint.push(c); osvjeziPrintPanel(); } }
+        function ukloniIzPrinta(idSistema) { listaZaPrint = listaZaPrint.filter(c => c.id_sistema !== idSistema); osvjeziPrintPanel(); }
+
+        function osvjeziPrintPanel() {
+            const badge = document.getElementById('print-count');
+            const preview = document.getElementById('print-preview-list');
+            const btn = document.getElementById('btn-print');
+            if (badge) badge.innerText = listaZaPrint.length;
+            if (!preview) return;
+            preview.innerHTML = '';
+
+            if (listaZaPrint.length === 0) {
+                preview.innerHTML = `<p class="italic text-gray-400">Nema odabranih stavki.</p>`;
+                if (btn) { btn.disabled = true; btn.className = "w-full bg-gray-400 text-white font-medium py-1.5 px-3 rounded text-xs cursor-not-allowed flex items-center justify-center gap-1.5 shadow-sm"; }
+                return;
+            }
+            if (btn) { btn.disabled = false; btn.className = "w-full bg-green-600 hover:bg-green-700 text-white font-medium py-1.5 px-3 rounded text-xs cursor-pointer flex items-center justify-center gap-1.5 shadow-sm"; }
+
+            listaZaPrint.forEach(clan => {
+                const item = document.createElement('div');
+                item.className = "flex justify-between items-center bg-gray-100 p-1 rounded border border-gray-200";
+                const isMeta = clan.id_sistema.startsWith("korisnik") || clan.id_sistema.startsWith("ai");
+                const ime = isMeta ? `${clan.broj_clana}` : `${clan.broj_clana} - ${clan.naziv_zakona}`;
+                item.innerHTML = `<span class="truncate font-medium max-w-[80%]">${ime}</span><button onclick="ukloniIzPrinta('${clan.id_sistema}')" class="text-red-500 hover:text-red-700 px-1"><i class="fa-solid fa-trash-can"></i></button>`;
+                preview.appendChild(item);
+            });
+        }
+
+        function stampajOdabrano() {
+            if (listaZaPrint.length === 0) return;
+            const prProzor = window.open('', '_blank');
+            let html = `<html><head><title>Izvještaj</title><style>body { font-family: Arial, sans-serif; padding: 30px; font-size: 13px; line-height: 1.5; color: #333; } .print-header { border-bottom: 2px solid #1e3a8a; padding-bottom: 10px; margin-bottom: 25px; } .clan-blok { page-break-inside: avoid; border: 1px solid #ddd; padding: 15px; margin-bottom: 15px; border-radius: 4px; } .clan-broj { font-weight: bold; color: #1e3a8a; background: #f0f4f8; padding: 2px 6px; border-radius: 3px; display: inline-block; }</style></head><body><div class="print-header"><h1>Generisani Izvještaj Dokumentacije</h1><p>Datum: ${new Date().toLocaleDateString('bs')}</p></div>`;
+            listaZaPrint.forEach(c => { html += `<div class="print-blok"><span class="clan-broj">${c.broj_clana}</span><div style="font-weight:bold; margin: 5px 0;">${c.naziv_clana}</div><div style="margin-top:10px;">${c.sadrzaj_html}</div><div style="font-size:11px; color:#777; font-style:italic; margin-top:10px; border-top:1px solid #eee; padding-top:5px;">Registni izvor: ${c.naziv_zakona}</div></div><br>`; });
+            html += `</body></html>`;
+            prProzor.document.write(html); prProzor.document.close(); prProzor.focus();
+            setTimeout(() => { prProzor.print(); }, 500);
+        }
+
+        function stampajPrompt() {
+            const txt = document.getElementById('ai-problem').value.trim();
+            if (!txt) return;
+            const id = "korisnik_prompt";
+            if (listaZaPrint.some(x => x.id_sistema === id)) return;
+            listaZaPrint.push({ id_sistema: id, broj_clana: "📝 Uneseni problem", naziv_clana: "Tekst problema poslat na evaluaciju", sadrzaj_html: `<div style="white-space: pre-wrap; background: #faf5ff; padding: 15px; border: 1px solid #e9d5ff; border-radius: 4px;">${txt}</div>`, naziv_zakona: "Korisnički unos" });
+            osvjeziPrintPanel();
+        }
+
+        function stampajAiAnalizu() {
+            const txt = document.getElementById('ai-response-text-desktop').innerText || document.getElementById('ai-response-text-mobile').innerText;
+            if (!txt) return;
+            const id = "ai_analiza_blok";
+            if (listaZaPrint.some(x => x.id_sistema === id)) return;
+            listaZaPrint.push({ id_sistema: id, broj_clana: "🤖 AI Rezultat", naziv_clana: "Mišljenje i analiza generisana od strane AI", sadrzaj_html: `<div style="white-space: pre-wrap; background: #f0fdf4; padding: 15px; border: 1px solid #bbf7d0; border-radius: 4px; color: #166534;">${txt}</div>`, naziv_zakona: "AI Asistent" });
+            osvjeziPrintPanel();
+        }
+
+        function zatvoriAiBox() {
+            document.getElementById('ai-response-box-desktop').classList.add('hidden');
+            document.getElementById('ai-response-box-mobile').classList.add('hidden');
+            document.getElementById('results-title').innerText = "Svi aktivni članovi";
+            filtrirajPrikaz();
+        }
+
+        window.onclick = function (e) { if (e.target == document.getElementById('member-modal')) zatvoriModal(); }
+        window.onload = ucitajSveZakone;
     </script>
 </body>
 </html>

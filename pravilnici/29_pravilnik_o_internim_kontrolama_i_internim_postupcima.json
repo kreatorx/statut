@@ -1,0 +1,167 @@
+{
+  "header": "Pravilnik o internim kontrolama i internim postupcima JU Univerzitet u Zenici",
+  "clanovi": [
+    {
+      "clan_broj": "1",
+      "glava": "DIO PRVI - UVODNE ODREDBE POGLAVLJE I. PREDMET",
+      "naslov": "(Predmet interne kontrole)",
+      "tekst": "Pravilnikom o internim kontrolama i internim postupcima (u daljem tekstu: Pravilnik) JU Univerzitet u Zenici (u daljem tekstu: Univerzitet) uređuje se sistem interne kontrole rada i poslovanja u domenu upravljačkih, administrativnih, računovodstvenih postupaka, postupaka informisanja, postupaka komunikacije i postupaka nadgledanja radi osiguranja ciljeva Univerziteta."
+    },
+    {
+      "clan_broj": "2",
+      "glava": "DIO PRVI - UVODNE ODREDBE POGLAVLJE I. PREDMET",
+      "naslov": "(Svrha interne kontrole)",
+      "tekst": "(1) Internom kontrolom osigurava se efektivnost i efikasnost rada i poslovanja, pouzdanost finansijskog izvještavanja, transparentnost izvještavanja o radu i poslovanju, usklađenost u radu i poslovanju Univerziteta sa zakonima i podzakonskim propisima. (2) Internom kontrolom omogućava se otkrivanje i otklanjanje greške u funkcionisanju rada i poslovanja Univerziteta."
+    },
+    {
+      "clan_broj": "3",
+      "glava": "DIO PRVI - UVODNE ODREDBE POGLAVLJE II. CILJ, FUNKCIJE I ZADACI INTERNE KONTROLE",
+      "naslov": "(Cilj interne kontrole)",
+      "tekst": "Cilj interne kontrole je da u skladu s važećim zakonskim propisima, planovima i procedurama osigura: a) efektivno i efikasno korištenje radnog potencijala svakog zaposlenog u cilju ispunjavanja plana rada i poslovanja Univerziteta. b) zaštitu resursa od gubitaka izazvanih rasipanjem, zloupotrebom, pogrešnim upravljanjem, greškama i drugim nepravilnostima u radu, c) prikupljanje i održavanje pouzdanih i tačnih finansijskih i upravljačkih podataka i informacija, kao i transparentnost izvještavanja o istim, d) uspostavljanje i provođenje odgovarajućih postupaka za smanjenje rizika i nepravilnosti u radu Univerziteta."
+    },
+    {
+      "clan_broj": "4",
+      "glava": "DIO PRVI - UVODNE ODREDBE POGLAVLJE II. CILJ, FUNKCIJE I ZADACI INTERNE KONTROLE",
+      "naslov": "(Funkcije interne kontrole)",
+      "tekst": "(1) Uspostava sistema interne kontrole zasnovana je na kriteriju da troškovi funkcioniranja ne prelaze koristi koje se očekuju od tog sistema. (2) Sistem interne kontrole obuhvata spektar procedura poslovanja na Univerzitetu, kao što su: a) kontrole u računovodstvu, nabavci, razgraničavanju nadležnosti u izvještavanju u skladu s procedurama stvaranja i evidentiranja obaveza, b) kontrole procedura nabavki roba, usluga i radova i stalnih sredstava, c) kontrole procedura signiranja, odlaganja radne dokumentacije, distribucije ulazne i izlazne dokumentacije, d) kontrola procedure blagajničkog poslovanja, e) kontrola korištenja službenih vozila, reprezentacije, mobilnih i fiksnih telefona i drugo."
+    },
+    {
+      "clan_broj": "5",
+      "glava": "DIO PRVI - UVODNE ODREDBE POGLAVLJE II. CILJ, FUNKCIJE I ZADACI INTERNE KONTROLE",
+      "naslov": "(Zadaci interne kontrole)",
+      "tekst": "Osnovni zadaci interne kontrole su kontrole nad sistemom funkcioniranja rada i poslovanja, s ciljem preventivnog djelovanja za sprečavanje nastajanja ili utvrđivanja nepravilnosti i pogrešaka u radu i poslovanju, te davanje prijedloga mjera za njihovo otklanjanje."
+    },
+    {
+      "clan_broj": "6",
+      "glava": "DIO PRVI - UVODNE ODREDBE POGLAVLJE II. CILJ, FUNKCIJE I ZADACI INTERNE KONTROLE",
+      "naslov": "(Okruženje interne kontrole)",
+      "tekst": "(1) Postojanje odgovarajućeg kontrolnog okruženja predstavlja osnovu za uspostavu efikasnog sistema interne kontrole organizacije rada i funkcioniranja Univerziteta. (2) U cilju adekvatnog i sveobuhvatnog provođenja interne kontrole potrebno je osigurati da svaki zaposlenik bude upoznat sa svojim dužnostima, očekivanim učinkom, te s odgovornošću izvještavanja neposrednog rukovodioca. (3) Organizaciona struktura Univerziteta treba jasno definirati ovlaštenja i odgovornosti zaposlenika, kako na nivou Univerziteta, tako i unutar organizacionih jedinica, u cilju uspostave efikasnog izvještavanja. (4) Kontrolno okruženje obuhvata sveukupni stav, svjesnost i mjere rukovodstva Univerziteta u vezi sa sistemom interne kontrole i njegovim značajem unutar Univerziteta."
+    },
+    {
+      "clan_broj": "7",
+      "glava": "DIO PRVI - UVODNE ODREDBE POGLAVLJE II. CILJ, FUNKCIJE I ZADACI INTERNE KONTROLE",
+      "naslov": "(Efektat interne kontrole)",
+      "tekst": "Kontrolom organizacije, postupaka i procedura interna kontrola osigurava slijedeće efekte: a) poštivanje propisa, internih akata, uputstava i pravila, b) promoviranje urednog, efektivnog i efikasnog poslovanja radi postizanja planiranih ciljeva, kao i kvaliteta rada i poslovanja, c) otkrivanje i ukazivanje na neuspješne i neefikasne radnje i greške koje mogu uticati na nenamjensko trošenje budžetskih sredstava, rad na sprečavanju i otklanjanju istih radi izbjegavanja zloupotrebe i lošeg upravljanja budžetskim sredstvima, d) razvijanje pouzdanih i transparentnih finansijskih i drugih informacija koje se tiču upravljanja i izvještavanja."
+    },
+    {
+      "clan_broj": "8",
+      "glava": "DIO DRUGI – KONTROLE I KONTROLNI POSTUPCI POGLAVLJE I. VRSTE INTERNE KONTROLE",
+      "naslov": "(Vrste interne kontrole)",
+      "tekst": "(1) Interna kontrola treba da se odvija istovremeno s tekućim procesom rada, ugrađena je u taj proces i čini njegov sastavni dio. (2) Osnovne vrste interne kontrole na Univerzitetu su: a) upravljačka, b) administrativna, c) računovodstvena."
+    },
+    {
+      "clan_broj": "9",
+      "glava": "DIO DRUGI – KONTROLE I KONTROLNI POSTUPCI POGLAVLJE I. VRSTE INTERNE KONTROLE Odjeljak A. Upravljačka interna kontrola",
+      "naslov": "(Procedure upravljačke interne kontrole)",
+      "tekst": "(1) Rektor rukovodi radom Univerziteta, ima prava i obaveze utvrđene zakonom i drugim propisima, a u rukovođenju mu pomažu: prorektori, generalni sekretar i šefovi službi Rektorata Univerziteta. (2) Upravljačka interna kontrola obuhvata pisane procedure vezane za upravljačke kontrolne postupke kojima se propisuju: a) pravila i metode za donošenje odluka u vezi s poslovnom, finansijskom i operativnom politikom, b) uspostava komunikacijskog sistema kojim se osigurava da svi zaposlenici daju svoj doprinos poslovnim politikama i procedurama koje se tiču njihovih obaveza i odgovornosti, c) raspored zadataka i ovlaštenja pojedinaca, d) metodi identifikacije rizika i upravljanja njime, e) metodologija za ocjenu uspješnosti u ostvarivanju zadataka organizacionih jedinica i pojedinaca."
+    },
+    {
+      "clan_broj": "10",
+      "glava": "DIO DRUGI – KONTROLE I KONTROLNI POSTUPCI POGLAVLJE I. VRSTE INTERNE KONTROLE Odjeljak A. Upravljačka interna kontrola",
+      "naslov": "(Upravljački kontrolni postupci)",
+      "tekst": "Upravljački kontrolni postupci su postupci normirani aktima Univerziteta, donesenim od strane odgovarajućih organa Univerziteta u skladu s odredbama Zakona o visokom obrazovanju („Službene novine Zeničko-dobojskog kantona“, broj: 6/09), Zakona o Javnoj ustanovi Univerzitet u Zenici („Službene novine Zeničko-dobojskog kantona“, broj: 6/05, 11/06, 6/09, 10/11 i 16/11) i drugim važećim zakonskim i podzakonskim propisima."
+    },
+    {
+      "clan_broj": "11",
+      "glava": "DIO DRUGI – KONTROLE I KONTROLNI POSTUPCI POGLAVLJE I. VRSTE INTERNE KONTROLE Odjeljak B. Administrativna interna kontrola",
+      "naslov": "(Procedure administrativne interne kontrole)",
+      "tekst": "Administrativna interna kontrola obuhvata pisane procedure vezane za administrativne kontrolne postupke kojima se propisuje: a) donošenje odluka i akata na osnovu kojih zaposlenici obavljaju svoje poslove i radne zadatke, b) prijem, razvrstavanje, donošenje, ovjeravanje i distribucija dokumentacije u Rektoratu i organizacionim jedinicama, kao i prema pojedincima, c) izrada, čuvanje, upotreba i uništavanje pečata, d) organizacija poslova unutar organizacionih jedinica i Rektorata, kao i njihova koordinacija, e) arhiviranje dokumentacije, pristup i korištenje iste, f) fizička kontrola nad imovinom i dokumentacijom, g) nadgledanje, kontrola i ocjena rada zaposlenih."
+    },
+    {
+      "clan_broj": "12",
+      "glava": "DIO DRUGI – KONTROLE I KONTROLNI POSTUPCI POGLAVLJE I. VRSTE INTERNE KONTROLE Odjeljak B. Administrativna interna kontrola",
+      "naslov": "(Administrativni kontrolni postupci)",
+      "tekst": "Administrativna interna kontrola obuhvata one kontrolne postupke koji se odnose na donošenje odluka i naloga na osnovu kojih zaposlenici obavljaju svoje poslove i radne zadatke, a koji treba da budu u skladu s propisima navedenim u članu 10. ovog pravilnika."
+    },
+    {
+      "clan_broj": "13",
+      "glava": "DIO DRUGI – KONTROLE I KONTROLNI POSTUPCI POGLAVLJE I. VRSTE INTERNE KONTROLE Odjeljak B. Administrativna interna kontrola",
+      "naslov": "(Dokumentacija Univerziteta)",
+      "tekst": "Kod poslova prijema, razvrstavanja, ovjeravanja i distribucije dokumentacije u Rektoratu, organizacionim jedinicama i prema pojedincima primjenjivat će se odgovarajuće odredbe Uredbe o kancelarijskom poslovanju organa uprave i službi za upravu u Federaciji Bosne i Hercegovine („Službene novine Federacije BiH“, broj: 20/98) i Uputstva o načinu vršenja kancelarijskog poslovanja u organima uprave i službi za upravu u Federaciji Bosne i Hercegovine („Službene novine Federacije BiH“, broj: 30/98 i 49/98)."
+    },
+    {
+      "clan_broj": "14",
+      "glava": "DIO DRUGI – KONTROLE I KONTROLNI POSTUPCI POGLAVLJE I. VRSTE INTERNE KONTROLE Odjeljak B. Administrativna interna kontrola",
+      "naslov": "(Pečati Univerziteta i organizacionih jedinica)",
+      "tekst": "U skladu s članom 17. stav (5) Statuta Univerziteta u Zenici broj pečata, način korištenja i čuvanja svakog pečata Univerziteta i organizacionih jedinica utvrđuje se posebnim aktom Rektora Univerziteta."
+    },
+    {
+      "clan_broj": "15",
+      "glava": "DIO DRUGI – KONTROLE I KONTROLNI POSTUPCI POGLAVLJE I. VRSTE INTERNE KONTROLE Odjeljak B. Administrativna interna kontrola",
+      "naslov": "(Registraturska i arhivska građa)",
+      "tekst": "Evidentiranje, čuvanje, zaštita i sređivanje registraturske i arhivske građe Univerziteta vrši se u skladu sa Zakonom o arhivskoj građi Federacije Bosne i Hercegovine („Službene novine Federacije BiH“, broj: 45/02) i drugim važećim propisima iz ove oblasti."
+    },
+    {
+      "clan_broj": "16",
+      "glava": "DIO DRUGI – KONTROLE I KONTROLNI POSTUPCI POGLAVLJE I. VRSTE INTERNE KONTROLE Odjeljak C. Računovodstvena interna kontrola",
+      "naslov": "(Planiranje i donošenje budžeta)",
+      "tekst": "(1) Univerzitet kao budžetski korisnik posluje po principu trezorskog poslovanja, dostavljanjem budžetskog prijedloga za svaku kalendarsku godinu Ministarstvu finansija Zeničko-dobojskog kantona (u daljem tekstu: Kanton), putem Ministarstva za obrazovanje, nauku, kulturu i sport Kantona (u daljem tekstu: nadležno Ministarstvo) na osnovu dobijenih smjernica Ministarstva finansija Kantona. (2) Nakon usvajanja Budžeta na nivou Kantona Služba za ekonomsko-finansijske poslove Univerziteta dostavlja Ministarstvu finansija Kantona, putem nadležnog Ministarstva finansijski plan (operativni plan) izvršenja budžeta za svaki mjesec. (3) Služba za ekonomsko-finansijske poslove Univerziteta putem sistema Glavne knjige trezora kao i u pomoćnim knjigama osigurava evidentiranje svih transakcija i poslovnih aktivnosti, odnosno evidentiranje stanja i promjena na cjelokupnoj imovini, prihoda, primitaka i potpora, rashoda, izdataka i drugih plaćanja u skladu s Analitičkim kontnim planom za budžet i budžetske korisnike."
+    },
+    {
+      "clan_broj": "17",
+      "glava": "DIO DRUGI – KONTROLE I KONTROLNI POSTUPCI POGLAVLJE I. VRSTE INTERNE KONTROLE Odjeljak C. Računovodstvena interna kontrola",
+      "naslov": "(Procedure računovodstvene interne kontrole)",
+      "tekst": "(1) Računovodstvena interna kontrola obuhvata pisane procedure koje osiguravaju da se računovodstvene transakcije obavljaju u skladu sa zakonom i drugim propisima, da se iste knjiže isključivo na osnovu vjerodostojne dokumentacije u pomoćnim i Glavnoj knjizi trezora, kao i da izvještaji o izvršenju budžeta sadrže pouzdane, ažurne i precizne informacije o rezultatima finansijskih operacija i finansijskoj situaciji. (2) Procedure iz stava (1) ovog člana propisuju: obračun plaće i naknada koje nemaju karakter plaće, prisustvo na poslu, obračun privremenih i povremenih poslova i ugovora o djelu, blagajničko poslovanje, nabavku roba i usluga, vršenje usluga u okviru djelatnosti, postupak vođenja knjigovodstvene dokumentacije, usaglašavanje podataka u pomoćnim knjigama s podacima u Glavnoj knjizi trezora, donošenje odluka o redovnom godišnjem i po potrebi vanrednom popisu imovine i obaveza, te druge postupke."
+    },
+    {
+      "clan_broj": "18",
+      "glava": "DIO DRUGI – KONTROLE I KONTROLNI POSTUPCI POGLAVLJE I. VRSTE INTERNE KONTROLE Odjeljak C. Računovodstvena interna kontrola",
+      "naslov": "",
+      "tekst": ""
+    },
+    {
+      "clan_broj": "19",
+      "glava": "DIO DRUGI – KONTROLE I KONTROLNI POSTUPCI POGLAVLJE I. VRSTE INTERNE KONTROLE Odjeljak C. Računovodstvena interna kontrola",
+      "naslov": "",
+      "tekst": ""
+    },
+    {
+      "clan_broj": "20",
+      "glava": "DIO DRUGI – KONTROLE I KONTROLNI POSTUPCI POGLAVLJE II. POSTUPCI PROCJENE RIZIKA I PRISTUP INFORMACIJAMA Odjeljak A. Postupci procjene rizika",
+      "naslov": "(Procjena rizika)",
+      "tekst": "(1) Efikasan sistem interne kontrole zahtijeva prepoznavanje i konstantnu procjenu i ocjenjivanje poslovnih rizika, koji mogu onemogućiti postizanje poslovnih ciljeva. (2) Procjena rizika se primjenjuje radi utvrđivanja vjerovatnoće nastanka neželjenih dešavanja i ozbiljnosti posljedica tekovih dešavanja, te utvrđivanja stepena rizika (visok, srednji, nizak) za aktivnosti iz djelokruga poslovanja Univerziteta. (3) Sve kontrolne radnje u sistemu interne kontrole Univerziteta, s aspekta svrhe njihovog izvođenja, svrstavaju se u slijedeće vrste interne kontrole: a) preventivna kontrola koja preventivno umanjuje nivo rizika za pojavu nezakonitosti, b) razotkrivajuća kontrola kojom se otkrivaju već nastale nezakonitosti, c) korektivna kontrola kojom se utvrđuje potpunost, tačnost, autentičnost i pravilnost realizacije plana korektivnih mjera za otklanjanje nepravilnosti konstatovanih u toku pregleda i interne kontrole."
+    },
+    {
+      "clan_broj": "21",
+      "glava": "DIO DRUGI – KONTROLE I KONTROLNI POSTUPCI POGLAVLJE II. POSTUPCI PROCJENE RIZIKA I PRISTUP INFORMACIJAMA Odjeljak A. Postupci procjene rizika",
+      "naslov": "(Preventivna interna kontrola)",
+      "tekst": "Preventivna interna kontrola provodi se: a) ličnim uvidom u svakodnevnom radu i rukovođenju, b) povremenim uvidom u stanje, čuvanje, održavanje, raspolaganje i korištenje resursa, c) provođenjem inventarisanja sredstava i izvora sredstava, d) organiziranjem i obavljanjem prethodnog i naknadnog pregleda dokumentacije o raspolaganju resursima, kao i neposrednim, te svakodnevnim nadzorom procesa rada, e) povremenim analizama kvalitativnog i kvantitativnog stanja resursa, analizom izvještaja o izvršenju planova i programa, f) na drugi pogodan način."
+    },
+    {
+      "clan_broj": "22",
+      "glava": "DIO DRUGI – KONTROLE I KONTROLNI POSTUPCI POGLAVLJE II. POSTUPCI PROCJENE RIZIKA I PRISTUP INFORMACIJAMA Odjeljak A. Postupci procjene rizika",
+      "naslov": "(Razotkrivajuća interna kontrola)",
+      "tekst": "Razotkrivajuća interna kontrola se provodi, zapravo, na neki od načina provođenja preventivne interne kontrole prilikom čega se otkrivaju nezakonitosti, otuđenja i slučajevi lošeg upravljanja resursima."
+    },
+    {
+      "clan_broj": "23",
+      "glava": "DIO DRUGI – KONTROLE I KONTROLNI POSTUPCI POGLAVLJE II. POSTUPCI PROCJENE RIZIKA I PRISTUP INFORMACIJAMA Odjeljak A. Postupci procjene rizika",
+      "naslov": "(Korektivna interna kontrola)",
+      "tekst": "Korektivna interna kontrola se provodi po planu korektivnih mjera kojim se otklanjaju nepravilnosti uočene u toku interne kontrole."
+    },
+    {
+      "clan_broj": "24",
+      "glava": "DIO DRUGI – KONTROLE I KONTROLNI POSTUPCI POGLAVLJE II. POSTUPCI PROCJENE RIZIKA I PRISTUP INFORMACIJAMA Odjeljak B. Procedure i pristup informacijama",
+      "naslov": "(Informiranje)",
+      "tekst": "(1) Informiranje predstavlja skup procedura i postupaka koji podrazumijeva obavještavanje (usmeno ili pismeno), davanje podataka, instrukcija, informacija i slično, s ciljem postizanja maksimalne efikasnosti, efektivnosti, ažurnosti, transparentnosti i zakonitosti u radu svakog zaposlenog. (2) Postupci informiranja su: a) Interni postupci informiranja predstavljaju postupke koji se koriste kod primjene upravljačkih, administrativnih i računovodstvenih procedura na Univerzitetu, u okviru kojih zaposleni, preko svojih pretpostavljenih, obavještavaju rektora o svom radu, ili mu na njegov zahtjev, daju druga obavještenja od značaja za rad Univerziteta u skladu sa zakonima, b) Eksterni postupci informiranja predstavljaju postupke koji se odnose na sve korisnike izvještaja, podataka i dokumenata proisteklih iz administrativnih i računovodstvenih internih procedura i koji se posebnim aktima dostavljaju na uvid ili korištenje institucijama u okruženju, putem Web stranice Univerziteta, dnevnih novina/sedmičnih časopisa, te Službenih novina Zeničko-dobojskog kantona i Službenih novina Federacije Bosne i Hercegovine."
+    },
+    {
+      "clan_broj": "25",
+      "glava": "DIO DRUGI – KONTROLE I KONTROLNI POSTUPCI POGLAVLJE II. POSTUPCI PROCJENE RIZIKA I PRISTUP INFORMACIJAMA Odjeljak C. Postupci komunikacije, nadgledanje i korektivne mjere",
+      "naslov": "(Postupci komunikacije)",
+      "tekst": "Postupci komunikacije uređuju se Pravilnikom o unutrašnjoj organizaciji i sistematizaciji radnih mjesta JU Univerzitet u Zenici kroz opis poslova svakog zaposlenog i podrazumijevaju uspostavljanje procedura brzog i efikasnog izvršavanja zadataka, uz osiguranje najkraćeg i najefikasnijeg načina međusobnog komuniciranja rukovodioca i zaposlenih unutar svake organizacione jedinice Univerziteta i Rektorata. kao i obaveznost komuniciranja između organizacionih jedinica i Rektorata Univerziteta."
+    },
+    {
+      "clan_broj": "26",
+      "glava": "DIO DRUGI – KONTROLE I KONTROLNI POSTUPCI POGLAVLJE II. POSTUPCI PROCJENE RIZIKA I PRISTUP INFORMACIJAMA Odjeljak C. Postupci komunikacije, nadgledanje i korektivne mjere",
+      "naslov": "(Nadgledanje)",
+      "tekst": "(1) Nadgledanje zaposlenih koje obuhvata redovno izvještavanje pretpostavljenih, kao i periodična ocjenjivanja zaposlenih, odgovornih za određene aktivnosti, dio je svakodnevnih aktivnosti rukovodstva. (2) Postupke nadgledanja, provođenja internih kontrolnih postupaka, te provođenja odredbi ovog Pravilnika, vrše rektor i prorektori, generalni sekretar, šefovi službi Rektorata, dekani i prodekani, direktori, a posredstvom internog revizora kome je to u opisu svakodnevnih poslova. (3) Rektor može obrazovati komisiju za obavljanje poslova nadgledanja, kao stalnu ili ad hoc komisiju. (4) Rektor ima pravo i obavezu da, preko lica iz stava (2) ovog člana i komisije iz stava (3) ovog člana, koju eventualno formira, nadgleda zakonitost i provođenje pisanih internih kontrolnih postupaka i procedura, a u cilju onemogućavanja činjenja nezakonitih radnji i transakcija."
+    },
+    {
+      "clan_broj": "27",
+      "glava": "DIO DRUGI – KONTROLE I KONTROLNI POSTUPCI POGLAVLJE II. POSTUPCI PROCJENE RIZIKA I PRISTUP INFORMACIJAMA Odjeljak C. Postupci komunikacije, nadgledanje i korektivne mjere",
+      "naslov": "(Nadziranje i korektivne mjere)",
+      "tekst": "(1) Nadziranje koje obuhvata stalni nadzor i redovno izvještavanje rukovodstva, kao i odvojena periodična ocjenjivanja putem samoprocjene efikasnosti kontrole, dio je svakodnevnih aktivnosti rukovodstva, putem djelovanja internog revizora kroz redovno obavljanje poslova nadzora i izvještavanja. (2) Potrebno je nadzirati finansijske, operativne i druge učinke kako bi se osiguralo: a) da osoblje razumije ustanovljene sisteme i procedure, b) ispunjavanje politika, vremenskih raspornih, poslovnih zadataka i ciljeva, c) identificiranje područja slabosti, u cilju skretanja pažnje rukovodstva na iste, d) otkrivanje greški i zloupotrebe, e) preduzimanje odgovarajućih korektivnih mjera."
+    }
+  ]
+}

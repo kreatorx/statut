@@ -1,0 +1,107 @@
+{
+  "header": "Pravilnik o ECTS-u",
+  "clanovi": [
+    {
+      "clan_broj": "1",
+      "glava": "POGLAVLJE I. OPĆE ODREDBE",
+      "naslov": "(Predmet Pravilnika)",
+      "tekst": "(1) Pravilnikom o ECTAS-u (EuropeanCreditTransferandAccumulationSystem) Univerziteta u Zenici (u daljem tekstu: Pravilnik) uređuju se opća pitanja u smislu provedbe Bolonjskog procesa i njegovog dijela koji se odnosi na implementaciju ECTAS-a (EuropeanCreditTransferandAccumulationSystem), odnosno Evropskog sistema prijenosa bodova, na Univerzitetu u Zenici (u daljem tekstu: Univerzitet). (2) Pravilnikom se uređuje način dodjele ECTAS bodova, provjera studentskog opterećenja i priznavanje stečenih bodova između organizacionih jedinica Univerziteta, definišu nadležnosti i obaveze koordinatora za ECTAS Univerziteta i fakultetâ, te procedure i načini njihovog imenovanja."
+    },
+    {
+      "clan_broj": "2",
+      "glava": "POGLAVLJE I. OPĆE ODREDBE",
+      "naslov": "(ECTAS i studentsko opterećenje)",
+      "tekst": "(1) ECTAS je jedinstveni bodovni sistem koji izražava opterećenje studenta u savladavanju određenog programa studija, a kojim se omogućuje lakša prepoznatljivost i poređenje različitih obrazovnih programa na evropskim obrazovnim institucijama. ECTAS bodovni sistem nacionalne sisteme ocjenjivanja čini transparentnijim i razumljivijim, te tako poboljšava i olakšava mobilnost studenata i akademskog osoblja. (2) Organizacione jedinice Univerziteta vrednuju svoje studijske programe prema ECTAS bodovnom sistemu koji je zasnovan na konzistentnom, lako provodivom, nedvosmislenom i upotrebljivom sistemu bodovanja. ECTAS bodovni sistem jasno precizira vrijednosti ECTAS bodova za svaku nastavnu jedinicu, semestar, akademsku godinu ili cjelokupni program koji diplomant završava. (3) ECTAS bodovi su brojčano izražena vrijednost koja se dodjeljuje predmetima radi izražavanja koeficijenta opterećenja studenta pri savladavanju gradiva tog predmeta. ECTS bodovi izražavaju količinu ukupnog rada koju svaki predmet zahtijeva u odnosu na ukupnu količinu rada koja je potrebna da se završi cijela godina studija, uključujući predavanja, praktičan rad/nastavu, vježbe, seminare, konsultacije, rad na terenu, procijenjeno vrijeme rada studenta na samostalnim zadacima, te procijenjeno vrijeme studenta za učenje kod pripreme za provjeru znanja i ocjenjivanje. (4) ECTAS bodovi se dodjeljuju svim predmetima, i obaveznim i izbornim. Bodovi se dodjeljuju radu na naučnim i stručnim projektima i radovima, disertacijama i praktičnom radu, ako su ove aktivnosti sastavni dio programa dodiplomskih i postdiplomskih studija. (5) ECTS bodovi se aktiviraju nakon upisivanja ocjene za položeni ispit."
+    },
+    {
+      "clan_broj": "3",
+      "glava": "POGLAVLJE I. OPĆE ODREDBE",
+      "naslov": "(Vrijednost ECTAS bodova)",
+      "tekst": "(1) Radno opterećenje studenata iznosi 40 (četrdeset) sati sedmično, što odgovara zbiru od 60 (šezdeset) ECTAS bodova u toku jedne akademske godine, odnosno 30 (trideset) ECTS bodova u toku jednog semestra. (2) 1 (jedan) ECTAS bod odgovara radnom opterećenju od 30 sati."
+    },
+    {
+      "clan_broj": "4",
+      "glava": "POGLAVLJE I. OPĆE ODREDBE",
+      "naslov": "(Usklađenost ECTAS bodova)",
+      "tekst": "Provjera usklađenosti ECTAS bodova, odnosno studentskog opterećenja, vrši se periodično putem intervjua, anketa ili drugih oblika prikupljanja podataka, a posebno nakon usvajanja i primjene novog odnosno revidiranog nastavnog plana i programa."
+    },
+    {
+      "clan_broj": "5",
+      "glava": "POGLAVLJE II. PRIZNAVANJE ISPITA I PRIJENOS BODOVA",
+      "naslov": "(Priznavanje ispita na drugoj instituciji)",
+      "tekst": "(1) Priznavanje ispita i perioda studiranja na drugoj instituciji podrazumijeva da period studiranja na nekoj drugoj instituciji zamjenjuje uporedan period studiranja na Univerzitetu, kao i da ispiti položeni na drugoj instituciji zamjenjuju ispite na Univerzitetu. (2) Ako matični ispiti pokrivaju širi opseg određenog predmeta i ne mogu se izjednačiti, tada matična institucija studentu garantuje da će se ispiti, koji su položeni na instituciji koja prima studenta, uzeti u obzir izuzimanjem odgovarajućeg dijela gradiva pri polaganju završnog ispita na matičnoj instituciji."
+    },
+    {
+      "clan_broj": "6",
+      "glava": "POGLAVLJE II. PRIZNAVANJE ISPITA I PRIJENOS BODOVA",
+      "naslov": "(Prijenos ECTAS bodova)",
+      "tekst": "(1) Prijenos bodova stečenih na jednoj obrazovnoj ustanovi na drugu obrazovnu ustanovu mora pratiti odgovarajuća dokumentacija i ugovori koje sklapaju student, matična obrazovna ustanova i obrazovna ustanova koja prima studenta. (2) Matična obrazovna ustanova i nematična obrazovna ustanova, koja prima studenta, pripremaju i razmjenjuju prijepise ocjena i drugih podataka za svakog studenta koji odlazi da studira na nematičnoj ustanovi u BiH ili inozemstvu, te pritom koristi ECTAS prije i poslije perioda studiranja na nematičnoj instituciji. (3) Student ima pravo da dobije prijepis ocjena za vlastite potrebe. (4) Matična obrazovna ustanova priznaje broj ECTAS bodova koje su njeni studenti stekli na partnerskoj instituciji u BiH ili inozemstvu, tako da bodovi za položen predmet zamjenjuju bodove predviđene od strane matične institucije. (5) Ugovorom o učenju studentu se unaprijed garantuje da će se ECTAS bodovi za odobreni studijski program priznati. (6) U slučaju kada student treba ponoviti period studiranja na matičnoj instituciji, produžavajući svoje studije, priznat će se ECTAS bodovi iz predmetâ u kojima je student bio uspješan."
+    },
+    {
+      "clan_broj": "7",
+      "glava": "POGLAVLJE II. PRIZNAVANJE ISPITA I PRIJENOS BODOVA",
+      "naslov": "(Opis vještina i kompetencija)",
+      "tekst": "Univerzitet je dužan da za svaki predmet opiše vještine i kompetencije kojima student treba da ovlada po polaganju ispita iz tog predmeta, te način na koji se provjerava i ocjenjuje da li je to postignuto."
+    },
+    {
+      "clan_broj": "8",
+      "glava": "POGLAVLJE II. PRIZNAVANJE ISPITA I PRIJENOS BODOVA",
+      "naslov": "(ECTAS i nacionalni sistem ocjenjivanja)",
+      "tekst": "Ocjenjivanje prema ECTAS skali vrednovanja ne zamjenjuje postojeći nacionalni sistem ocjenjivanja."
+    },
+    {
+      "clan_broj": "9",
+      "glava": "POGLAVLJE II. PRIZNAVANJE ISPITA I PRIJENOS BODOVA",
+      "naslov": "(ECTAS skala vrednovanja Univerziteta)",
+      "tekst": "ECTAS skala vrednovanja Univerziteta prikazana je u sljedećoj tabeli: ECTAS ocjenaOcjenaOpisA10izvanredan uspjehB9iznad prosjekaC8prosječno sa manjim greškamaD7dobro sa značajnim nedostacimaE6zadovoljava minimalne kriterijeF, FX5ne zadovoljava"
+    },
+    {
+      "clan_broj": "10",
+      "glava": "POGLAVLJE II. PRIZNAVANJE ISPITA I PRIJENOS BODOVA",
+      "naslov": "(Dokumenti ECTS-a)",
+      "tekst": "(1) Ključni dokumenti ECTAS-a su: 1. Diploma o stečenom visokom obrazovanju u prvom, drugom i trećem ciklusu studija; 2. Dodatak diplomi; 3. Evidencioni list ostvarenih ECTAS bodova; 4. ECTAS prijepis ocjena; 5. Studentska pristupnica za studiranje u inozemstvu; 6. Formular za provjeru radnog opterećenja prema obrazovnom modulu; 7. Prijedlog za priznavanje položenih ispita; 8. Ugovor o učenju i Promjena ugovora o učenju. (2) Sadržaj i formu navedenih dokumenata usvaja Senat Univerziteta i utvrđuje Pravilnikom o sadržaju javnih isprava koje izdaje JU Univerzitet u Zenici."
+    },
+    {
+      "clan_broj": "11",
+      "glava": "POGLAVLJE III. ODBOR I KOORDINATORI ZA ECTAS",
+      "naslov": "(Koordinator za ECTAS Univerziteta)",
+      "tekst": "(1) Senat, iz reda nastavnog osoblja, imenuje koordinatora za ECTAS Univerziteta na period od 4 (četiri) godine. Koordinator za ECTAS Univerziteta za svoj rad odgovara prorektoru za nastavu i studentska pitanja. (2) Koordinator za ECTAS Univerziteta obavlja sljedeće poslove: 1. potiče i razvija ukupnu implementaciju principa i ustrojstva ECTAS-a, kao i mehanizama za prijenos i akumulaciju bodova na Univerzitetu; 2. nadgleda i koordinira mehanizme za ispravno korištenje ECTAS-a na Univerzitetu i fakultetima Univerziteta; 3. vodi sjednice i odgovoran je za arhivu Odbora za ECTAS Univerziteta; 4. olakšava praktičnu implementaciju ECTAS-a, te pruža podršku, organizuje i koordinira rad koordinatora ECTAS-a na fakultetima Univerziteta; 5. vodi brigu o pravilnom i konzistentnom načinu prijenosa i akumulacije ECTAS bodova na svim fakultetima Univerziteta; 6. učestvuje u provedbi administrativnih i akademskih aspekata ECTAS-a; 7. informiše i savjetuje studente o svim aspektima ECTAS-a i promoviše principe ECTAS-a; 8. promoviše mobilnost studenata i akademskog osoblja, kako na Univerzitetu, tako i izvan Univerziteta u okviru programa međunarodne saradnje; 9. u saradnji s koordinatorima za ECTAS fakulteta, koordinira pripremu, izradu i distribuciju svih informacija u pisanoj i elektronskoj formi u vezi s aktivnošću i promocijom ECTAS-a; 10. odgovora za ugovorne sporazume s Evropskom unijom i državnom institucijom za dodjelu grantova; 11. po potrebi učestvuje u radu Odbora za kvalitet Univerziteta; 12. učestvuje u radu Komisije za priznavanje položenih ispita Univerziteta."
+    },
+    {
+      "clan_broj": "12",
+      "glava": "POGLAVLJE III. ODBOR I KOORDINATORI ZA ECTAS",
+      "naslov": "(Koordinatori za ECTAS fakulteta)",
+      "tekst": "(1) Koordinatore za ECTAS fakulteta, na prijedlog dekana fakulteta, imenuju naučno-nastavna vijeća fakulteta na period od 4 (četiri) godine. Koordinator za ECTAS fakulteta za svoj rad odgovara dekanu fakulteta i ECTAS koordinatoru Univerziteta. (2) Koordinatori za ECTAS fakulteta, kao kontakt osobe za sve studente i akademsko osoblje fakulteta, obavljaju slijedeće poslove: 1. potiču i razvijaju ukupnu implementaciju principa i ustrojstva ECTAS-a, kao i mehanizama za prijenos i akumulaciju bodova na fakultetu; 2. vode brigu o pravilnom i konzistentnom načinu prijenosa i akumulacije ECTAS bodova na fakultetu Univerziteta; 3. osiguravaju svaku vrstu pomoći potencijalnim mobilnim studentima, a posebno potrebne informacije i aplikacije s drugih obrazovnih ustanova; 4. osiguravaju izdavanje prijepisa ocjena za sve mobilne studente nakon okončanja njihovog studijskog boravka ili pri odlasku na studijski boravak na drugu obrazovnu ustanovu; 5. pomažu studentima u praktičnim detaljima ECTAS-a (pomažu studentima pri popunjavanju studentskih aplikacija, pojašnjavaju procedure akademske prepoznatljivosti i dokumenata, usmjeravaju studente kako da osmisle program kombinujući akademske zahtjeve s individualnim interesima, itd.) 6. prate proces izrade dodataka diploma; 7. učestvuju u izradi novih i revidiranju postojećih nastavnih planova i programa; 8. odgovaraju za komunikaciju između fakulteta i inozemnih institucija u vezi sa ECTAS-om; 9. pripremaju neophodne informacije koje se tiču ECTAS-a na njihovom fakultetu; 10. odgovorni su za neometanu integraciju gostujućih studenata na njihovom fakultetu; 11. osiguravaju studentima svoga fakulteta koji odlaze na druge obrazovne ustanove svu potrebnu pomoć i održavaju s njima redovne kontakte; 12. po potrebi učestvuju u radu odbora za kvalitet organizacione jedinice; 13. učestvuju u izradi samoevaluacijskih izvještaja; 14. učestvuju u pripremnim aktivnostima za određene akreditacije organizacione jedinice i Univerziteta; 15. učestvuju u radu komisije za nastavu - priznavanje položenih ispita te 16. obavljaju ostale poslove po nalogu koordinatora za ECTAS Univerziteta."
+    },
+    {
+      "clan_broj": "13",
+      "glava": "POGLAVLJE III. ODBOR I KOORDINATORI ZA ECTAS",
+      "naslov": "(Odbor za ECTAS Univerziteta)",
+      "tekst": "(1) Prorektor za nastavu i studentska pitanja, koordinator za ECTAS Univerziteta i koordinatori za ECTS fakultetâ Univerziteta čine Odbor za ECTAS Univerziteta. (2) Radom Odbora rukovodi prorektor za nastavu i studentska pitanja u saradnji sa koordinatorom za ECTAS Univerziteta . (3) Odbor za ECTAS rukovodi i koordinira svim poslovima koji se tiču ukupne implementacije ECTAS-a, kako na Univerzitetu, tako i na svim fakultetima Univerziteta, a posebno u smislu člana 11. i 12. ovoga Pravilnika, te vrši provjeru usklađenosti ECTAS bodova, odnosno studentskog opterećenja, na nalog Senata Univerziteta. (4) Odbor za ECTAS Univerziteta usko sarađuje s Odborom za kvalitet Univerziteta, te po potrebi koordinirano djeluju. (5) Odbor za ECTAS Univerziteta redovno održava svoje sjednice, a najmanje jednom mjesečno."
+    },
+    {
+      "clan_broj": "14",
+      "glava": "POGLAVLJE IV. PRIJELAZNE I ZAVRŠNE ODREDBE",
+      "naslov": "(Izuzeci od Pravilnika)",
+      "tekst": "Odredbe ovog Pravilnika ne odnose se na javne isprave izdavane po propisima koji su važili prije stupanja na snagu Okvirnog zakona o visokom obrazovanju u Bosni i Hercegovini."
+    },
+    {
+      "clan_broj": "15",
+      "glava": "POGLAVLJE IV. PRIJELAZNE I ZAVRŠNE ODREDBE",
+      "naslov": "(Stupanje na snagu)",
+      "tekst": "Ovaj Pravilnik stupa na snagu narednog dana od dana objavljivanja na WEB stranici Univerziteta."
+    },
+    {
+      "clan_broj": "16",
+      "glava": "POGLAVLJE IV. PRIJELAZNE I ZAVRŠNE ODREDBE",
+      "naslov": "(Izmjene i dopune Pravilnika)",
+      "tekst": "Pravilnik se može mijenjati i dopunjavati na način i po postupku utvrđenom za njegovo donošenje."
+    },
+    {
+      "clan_broj": "17",
+      "glava": "POGLAVLJE IV. PRIJELAZNE I ZAVRŠNE ODREDBE",
+      "naslov": "(Tumačenje Pravilnika)",
+      "tekst": "Tumačenje ovog Pravilnika daje Senat Univerziteta."
+    }
+  ]
+}

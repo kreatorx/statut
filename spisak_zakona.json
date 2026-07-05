@@ -1,5 +1,54 @@
-[
-  "01_Statut_maj_2023.json",
-  "02_Pravilnik_o_organizaciji_nastave_na_I_II_i_III_ciklusu.json",
-  "03_Pravilnik_o_naucnim_i_istrazivackim_zvanjima.json"
-]
+{
+  "statut": [
+    "01_Statut_maj_2023.json"
+  ],
+  "eticki_kodeks": [
+    "01_eticki_kodeks.json",
+    "02_izmjene_i_dopune_etickog_kodeksa.json",
+    "03_kodeks_ponasanja_i_odijevanja.json"
+  ],
+  "pravilnici": [
+    "02_Pravilnik_o_organizaciji_nastave.json",
+    "03_Pravilnik_o_naucnim_i_istrazivackim_zvanjima.json",
+    "04_Pravilnik_o_nagradama_za_studente.json",
+    "05_Pravilnik_o_registru_publikacija.json",
+    "06_Pravilnik_o_izdavackoj_djelatnosti.json",
+    "07_Poslovnik_o_radu_upravnog_odbora.json",
+    "08_Poslovnik_o_radu_senata.json",
+    "09_Pravilnik_o_dodatnom_angazovanju.json",
+    "10_Pravilnik_o_placama.json",
+    "11_Pravilnik_o_zastiti_od_pozara.json",
+    "12_Pravilnik_o_sistematizaciji_radnih_mjesta.json",
+    "12.1_Pravilnik_o_sistematizaciji_radnih_mjesta_1.json",
+    "12.2_Pravilnik_o_sistematizaciji_radnih_mjesta_2.json",
+    "13_Pravilnik_o_reprezentaciji_i_poklonima.json",
+    "14_Pravilnik_o_radu_JU_UNZE.json",
+    "14.1_Pravilnik_o_radu_JU_UNZE_1.json",
+    "14.2_Pravilnik_o_radu_JU_UNZE_2.json",
+    "15_Pravilnik_o_ekvivalenciji_ranije_stecenih_zvanja.json",
+    "16_Pravilnik_o_priznanjima.json",
+    "17_Pravilnik_o_trosenju_prihoda.json",
+    "17.1_Pravilnik_o_trosenju_prihoda_1.json",
+    "18_Pravilnik_o_evaluiranju_nastavnog_procesa.json",
+    "19_Pravilnik_o_sluzbenim_vozilima.json",
+    "20_Pravilnik_o_radu_katedri.json",
+    "21_Pravilnik_o_sluzbi_za_RHB_zastitu.json",
+    "22_Pravilnik_o_zvanju_emeritus.json",
+    "23_Pravilnik_o_naucnoistrazivackom_radu.json",
+    "24_Pravilnik_o_sluzbenim_putovanjima.json",
+    "25_interni_akt_o_zastiti_na_radu.json",
+    "26_pravilnik_o_tehnikim_karakteristikama_diplomskog.json",
+    "26.1_pravilnik_o_dopuni_pravilnika_o_izradi_diplomskog.json",
+    "27_pravilnik_o_repozitorijima_radova.json",
+    "28_pravilnik_o_organizaciji_unutranje_slube_zatite.json",
+    "29_pravilnik_o_internim_kontrolama_i_internim_postupcima.json",
+    "30_pravilnik_o_izboru_nastavnika_i_saradnika.json",
+    "31_pravilnik_o_radu_univerzitetske_biblioteke.json",
+    "32_poslovnik_o_radu_foruma_stakeholdera_usvojeni.json",
+    "33_poslovnik_o_radu_etike_komisije.json",
+    "34_pravilnik_o_mobilnosti.json",
+    "35_pravilnik_o_javnim_nabavkama.json",
+    "36_pravilnik_o_ectsu.json",
+    "37_pravilnik_o_saradnji.json"
+  ]
+}
